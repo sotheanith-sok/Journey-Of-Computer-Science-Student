@@ -35,6 +35,7 @@ public class Frame extends JFrame {
 	private JPanel contentPane;
 	
 	public int totalPlayers = 4;
+	private int defaultWidth = 1200 , defaultHeight = 800;
 	
 	public BufferedImage map;
 	
@@ -75,7 +76,7 @@ public class Frame extends JFrame {
 		}
 		setTitle("CECS 343 CECSBS Project");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(800,600);
+		setSize(defaultWidth,defaultHeight);
 		setBounds(0, 0, getWidth(), getHeight());
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -83,7 +84,6 @@ public class Frame extends JFrame {
 		contentPane.setLayout(new GridLayout(0, 1, 0, 0));
 		JPanel mapCanvas = new mapPanelBackground();
 		mapCanvas.setPreferredSize(new Dimension(map.getWidth(), map.getHeight()));
-		
 		JScrollPane mapPanel = new JScrollPane(mapCanvas);
 		mapPanel.setHorizontalScrollBarPolicy(
 				   JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
