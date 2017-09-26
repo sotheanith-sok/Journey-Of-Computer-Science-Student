@@ -34,9 +34,9 @@ public class Frame extends JFrame {
 
 	private JPanel contentPane;
 	
-	public int totalPlayers = 4;
+	public int totalPlayers = 3;
 	private int defaultWidth = 1200 , defaultHeight = 800;
-	
+	public ArrayList<Player> players = new ArrayList<Player>();
 	public BufferedImage map;
 	
 	/**
@@ -53,6 +53,7 @@ public class Frame extends JFrame {
 				}
 			}
 		});
+		
 	}
 
 	/**
@@ -64,16 +65,18 @@ public class Frame extends JFrame {
 		 @Override
 		  protected void paintComponent(Graphics g) {
 		    super.paintComponent(g);
-		    g.drawImage(map,0,0,null);
+		    g.drawImage(map,0,0,null); // paints the image of the map onto the background 
 		  }
 		 	
 	}
 	public Frame() {
-		try {
+	
+		try {													// Loads the image of the CSULB map
 		    map = ImageIO.read(new File("src\\csulbMap.png"));
 		} catch (IOException e) {
-			System.err.println("Image not found");
+			System.err.println("Image not found");		//If the image file isnt found
 		}
+		
 		setTitle("CECS 343 CECSBS Project");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(defaultWidth,defaultHeight);
@@ -90,70 +93,73 @@ public class Frame extends JFrame {
 		mapPanel.setVerticalScrollBarPolicy(
 				   JScrollPane.VERTICAL_SCROLLBAR_ALWAYS); 
 		
-		//mapPanel.add(map);
+		
 		contentPane.add(mapPanel);
 		
-		JPanel userPanel = new JPanel();
-		userPanel.setBackground(Color.DARK_GRAY);
-		contentPane.add(userPanel);
-		userPanel.setBounds(getX(), getY(), getWidth(), getHeight()/2);
-		userPanel.setLayout(new GridLayout(0, 2, 0, 0));
+		JPanel playerPanel = new JPanel();
+		playerPanel.setBackground(Color.DARK_GRAY);
+		contentPane.add(playerPanel);
+		playerPanel.setBounds(getX(), getY(), getWidth(), getHeight()/2);
+		playerPanel.setLayout(new GridLayout(0, 2, 0, 0));
 		
-		JTabbedPane tabbedPanel = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPanel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
-		tabbedPanel.setForeground(Color.BLACK);
-		tabbedPanel.setBackground(Color.WHITE);
-		userPanel.add(tabbedPanel);
+		JTabbedPane cardPanel = new JTabbedPane(JTabbedPane.TOP);
+		cardPanel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+		cardPanel.setForeground(Color.BLACK);
+		cardPanel.setBackground(Color.WHITE);
+		playerPanel.add(cardPanel);
 		
 		JButton card1 = new JButton("");
-		tabbedPanel.addTab("Cards", null, card1, null);
+		cardPanel.addTab("Cards", null, card1, null);
 		
 		JPanel infoPanel = new JPanel();
-		userPanel.add(infoPanel);
+		playerPanel.add(infoPanel);
 		infoPanel.setLayout(new GridLayout(0, 1, 0, 0));
 		
+		JPanel namePanel = new JPanel();
+		infoPanel.add(namePanel);
+		
 		JPanel scorePanel = new JPanel();
+		namePanel.add(scorePanel);
 		scorePanel.setBackground(Color.GRAY);
-		infoPanel.add(scorePanel);
 		scorePanel.setLayout(new GridLayout(totalPlayers, 2, 0, 0));
+		
+		JPanel scoreInfoPanel = new JPanel();
+		namePanel.add(scoreInfoPanel);
+		scoreInfoPanel.setLayout(new GridLayout(1, 0, 0, 0));
 		
 		ArrayList<JLabel> playerName = new ArrayList<JLabel>();
 		ArrayList<JLabel> playerScore = new ArrayList<JLabel>();
-		ArrayList<Integer> playerScoreVal = new ArrayList<Integer>();
+
 		for(int i = 0 ; i < totalPlayers ; i++)
 		{
-			playerName.add(new JLabel("Player #" + (i+1)));
-			playerScoreVal.add(0);
-			playerScore.add(new JLabel("Score : " + playerScoreVal.get(i)));
+			
+			players.add(new Player());
+			if(i == 0)			// Prompts User for name before the program continues
+			{
+				players.get(i).setName(players.get(i).promptName());
+				playerName.add(new JLabel(players.get(i).getName()));
+			
+			}
+			else //else the rest of the names are AI by default
+			{
+				playerName.add(new JLabel(players.get(i).getName() + (i)));
+			}
+			
+	
+			playerScore.add(new JLabel("Learning: " + players.get(i).getLearning() + "     Craft: " + players.get(i).getCraft() + "     Integrity: " + players.get(i).getIntegrity()));
 			playerScore.get(i).setVerticalAlignment(SwingConstants.CENTER);
-			playerScore.get(i).setFont(new Font("Tahoma", Font.BOLD, 21));
+			playerScore.get(i).setFont(new Font("Tahoma", Font.BOLD, 13));
+			playerScore.get(i).setHorizontalAlignment(SwingConstants.LEFT);
 			playerName.get(i).setVerticalAlignment(SwingConstants.CENTER);
 			playerName.get(i).setFont(new Font("Tahoma", Font.BOLD, 21));
 			scorePanel.add(playerName.get(i));
 			scorePanel.add(playerScore.get(i));
 		}
-		/*
-		JLabel user1 = new JLabel("User #1");
-		user1.setFont(new Font("Tahoma", Font.BOLD, 21));
-		user1.setVerticalAlignment(SwingConstants.TOP);
-		scorePanel.add(user1);
 		
-		JLabel user2 = new JLabel("User #2");
-		user2.setVerticalAlignment(SwingConstants.TOP);
-		scorePanel.add(user2);
-		
-		JLabel user3 = new JLabel("User #3");
-		user3.setVerticalAlignment(SwingConstants.TOP);
-		scorePanel.add(user3);
-		
-		JLabel user4 = new JLabel("User #4");
-		user4.setVerticalAlignment(SwingConstants.TOP);
-		scorePanel.add(user4);//*/
-		
-		JTextPane resultsPanel = new JTextPane();
-		resultsPanel.setBackground(Color.WHITE);
-		resultsPanel.setEditable(false);
-		infoPanel.add(resultsPanel);
+			JTextPane resultsPanel = new JTextPane();
+			resultsPanel.setBackground(Color.WHITE);
+			resultsPanel.setEditable(false);
+			infoPanel.add(resultsPanel);
 	}
 
 }
