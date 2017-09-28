@@ -23,6 +23,13 @@ public class Card1 extends Card{
 		player.setLearning(player.getLearning() + 1);
 		
 	}
+
+	@Override
+	public Boolean requirement(String location, int stat) {
+		return false;
+		// TODO Auto-generated method stub
+		
+	}
 	
 
 	

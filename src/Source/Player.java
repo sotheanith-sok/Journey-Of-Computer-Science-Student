@@ -7,6 +7,7 @@ public class Player {
 
 	int score, skillChips , qualityPoints , learning, craft , integrity;
 	String name = "";
+	String location = "";
 	
 	public Player()
 	{
@@ -83,7 +84,17 @@ public class Player {
 	public void setIntegrity(int integrity) {
 		this.integrity = integrity;
 	}
-
+	
+	public String getLocation()
+	{
+		return location;
+	}
+	
+	public void setLocation(String location)
+	{
+		this.location = location;
+	}
+	
 	public String promptName()
 	{
 		boolean valid = false;

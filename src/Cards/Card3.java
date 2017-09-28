@@ -20,4 +20,11 @@ public class Card3 extends Card {
 		
 	}
 
+	@Override
+	public Boolean requirement(String location, int stat) {
+		return false;
+		// TODO Auto-generated method stub
+		
+	}
+
 }

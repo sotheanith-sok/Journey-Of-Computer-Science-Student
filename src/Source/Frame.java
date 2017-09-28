@@ -13,6 +13,7 @@ import javax.imageio.ImageIO;
 import javax.swing.BoxLayout;
 import java.awt.CardLayout;
 import java.awt.GridLayout;
+import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -30,6 +31,8 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+
 import javax.swing.JScrollBar;
 
 public class Frame extends JFrame {
@@ -56,26 +59,43 @@ public class Frame extends JFrame {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+				
+				
 			}
 		});
 		
 	}
 
-	/**
-	 * Create the frame.
-	 */
+	
 	class mapPanelBackground extends JPanel
 	{
 		
 		 @Override
 		  protected void paintComponent(Graphics g) {
 		    super.paintComponent(g);
-		    g.drawImage(map,0,0,null); // paints the image of the map onto the background 
+		    Graphics2D g2 = (Graphics2D) g;
+		   
+		    //g2.scale(1.58, 1);
+		    
+		    g2.scale(4, 2);
+		    g2.drawImage(map,0,0,null); // paints the image of the map onto the background 
 		  }
 		 	
 	}
 	
+	//updates all variables in the game
+	public void update()
+	{
+		for(int i = 0 ; i < totalPlayers ; i++)
+		{
+			playerScore.get(i).setText("Skill Chips: " + players.get(i).getSkillChips() + "     Quality Points: " + players.get(i).getQualityPoints() +"     Learning: " + players.get(i).getLearning() + "     Craft: " + players.get(i).getCraft() + "     Integrity: " + players.get(i).getIntegrity());
+		}
+		
+	}
 	
+	/**
+	 * Create the frame.
+	 */
 	public Frame() {
 	
 		try {													// Loads the image of the CSULB map
@@ -92,17 +112,37 @@ public class Frame extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new GridLayout(0, 1, 0, 0));
+		
+		
+		
+		
+		
+///////////////////JSCROLLPANE////////////////////////////		
 		JPanel mapCanvas = new mapPanelBackground();
-		mapCanvas.setPreferredSize(new Dimension(map.getWidth(), map.getHeight()));
-		JScrollPane mapPanel = new JScrollPane(mapCanvas);
-		mapPanel.setHorizontalScrollBarPolicy(
-				   JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-		mapPanel.setVerticalScrollBarPolicy(
-				   JScrollPane.VERTICAL_SCROLLBAR_ALWAYS); 
-		
-		
+		JScrollPane mapPanel = new JScrollPane();
 		contentPane.add(mapPanel);
+		contentPane.updateUI();
+		mapPanel.setHorizontalScrollBarPolicy(
+				   JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		mapPanel.setVerticalScrollBarPolicy(
+				   JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		//mapPanel.setPreferredSize(new Dimension(defaultWidth , defaultHeight));
+		JPanel locationPanel = new mapPanelBackground();
+		locationPanel.setPreferredSize(new Dimension(map.getWidth() * 4 , map.getHeight() * 4));
+		locationPanel.setLayout(null);
 		
+		
+		mapPanel.setViewportView(locationPanel);
+		mapPanel.getVerticalScrollBar().setUnitIncrement(15);
+		mapPanel.getHorizontalScrollBar().setUnitIncrement(15);
+		//JScrollBar verticalBar = mapPanel.getVerticalScrollBar();
+		//verticalBar.setValue(mapPanel.getVerticalScrollBar().getMaximum());
+		//verticalBar.setValue(mapPanel.getVerticalScrollBar().getMaximum());
+		mapPanel.getViewport().setViewPosition(new Point(2000,1810));
+/////////////////////JSCROLLPANE///////////////////////////////////////		
+		
+		
+////////////////////UI BUTTONS/////////////////////////
 		JPanel playerPanel = new JPanel();
 		playerPanel.setBackground(Color.DARK_GRAY);
 		contentPane.add(playerPanel);
@@ -110,33 +150,24 @@ public class Frame extends JFrame {
 		playerPanel.setLayout(new GridLayout(0, 2, 0, 0));
 		
 		JTabbedPane cardPanel = new cardPanel();
-		//JTabbedPane cardPanel = new JTabbedPane(JTabbedPane.TOP);
-		/*cardPanel.setBorder(new LineBorder(new Color(0, 0, 0), 2));
-		cardPanel.setForeground(Color.BLACK);
-		cardPanel.setBackground(Color.WHITE);*/
+		
 		playerPanel.add(cardPanel);
-		
-		//JButton card1 = new JButton("");
-		//cardPanel.addTab("Cards", null, card1, null);
-		
+
 		JPanel infoPanel = new JPanel();
 		playerPanel.add(infoPanel);
 		infoPanel.setLayout(new GridLayout(0, 1, 0, 0));
+///////////////////UI BUTTONS/////////////////////////////////////////////		
 		
+
+		
+/////////////////SCORE///////////////////////
 		JPanel namePanel = new JPanel();
 		infoPanel.add(namePanel);
 		namePanel.setLayout(new GridLayout(0, 1, 0, 0));
-		
 		JPanel scorePanel = new JPanel();
 		namePanel.add(scorePanel);
 		scorePanel.setBackground(Color.GRAY);
 		scorePanel.setLayout(new GridLayout(totalPlayers, 2, 0, 0));
-		
-		//JPanel scoreInfoPanel = new JPanel();
-		//namePanel.add(scoreInfoPanel);
-		//scoreInfoPanel.setLayout(new GridLayout(1, 0, 0, 0));
-		
-		
 
 		for(int i = 0 ; i < totalPlayers ; i++)
 		{
@@ -163,11 +194,14 @@ public class Frame extends JFrame {
 			scorePanel.add(playerName.get(i));
 			scorePanel.add(playerScore.get(i));
 		}
+////////////////////SCORE//////////////////////////////////	
 		
+///////////////////////////TEXT FIELD////////////////////
 			JTextPane resultsPanel = new JTextPane();
 			resultsPanel.setBackground(Color.WHITE);
 			resultsPanel.setEditable(false);
 			infoPanel.add(resultsPanel);
+///////////////////////////////////////////////////////////
 	}
 
 }
