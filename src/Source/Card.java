@@ -2,16 +2,28 @@ package Source;
 
 public abstract class Card {
 
-	private String name , effect;
-	
-	public Card(String name , String effect)
+	private String name;
+	private String description;
+	private String location;
+	private int learning=0; 
+	private int crafting=0;
+	private int integrity=0;
+	public Card(String name , String description, String location, int learning, int crafting, int integrity)
 	{
 		this.name = name;
-		this.effect = effect;
+		this.description= description;
+		this.location=location;
+		this.learning=learning;
+		this.crafting=crafting;
+		this.integrity=integrity;
 	}
 	
 	public Card()
-	{}
+	{
+		this.name="NULL";
+		this.description="NULL";
+		this.location="NULL";
+	}
 	
 	public String getName() {
 		return name;
