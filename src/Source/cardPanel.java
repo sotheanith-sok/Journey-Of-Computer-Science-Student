@@ -27,13 +27,13 @@ public class cardPanel extends JTabbedPane{
 		cards.add(new Card2());
 		for(Card c : cards)
 		{
-			JButton temp = new JButton("<html>" + c.getName() + "<br />" + c.getEffect() + "</html>");
+			JButton temp = new JButton("<html>" + c.getName() + "<br />" + c.getDescription() + "</html>");
 			temp.setName(c.getName());
 			temp.addActionListener(new ActionListener(){
 
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					c.effect(Frame.players.get(0));
+					Effect.changePlayer(c, Frame.players.get(0));
 					Frame.playerScore.get(0).setText("Skill Chips: " + Frame.players.get(0).getSkillChips() + "     Quality Points: " + Frame.players.get(0).getQualityPoints() +"     Learning: " + Frame.players.get(0).getLearning() + "     Craft: " + Frame.players.get(0).getCraft() + "     Integrity: " + Frame.players.get(0).getIntegrity() );
 					temp.setEnabled(false);
 					//removeTabAt(index);

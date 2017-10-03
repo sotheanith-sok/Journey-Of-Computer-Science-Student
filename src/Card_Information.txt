@@ -1,0 +1,1 @@
+Name|Description|Location(PharseBy",")|Learning|Craft|Integrity|Year|EffectIndex|EffectModifier
