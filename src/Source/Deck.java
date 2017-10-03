@@ -18,11 +18,11 @@ public class Deck {
 	}
 
 	public void instantiateDeck() {
-		Scanner in=null;
+		Scanner in=null; 
 		try {
-			in = new Scanner(new File("Card_Information.txt"));
+			in = new Scanner(new File("src/Card_Information.txt"));
 			while (in.hasNextLine()) {
-				String[] cardInfo = in.nextLine().split("|");
+				String[] cardInfo = in.nextLine().split("\\|");
 				deck.add(new Card(cardInfo[0], cardInfo[1], cardInfo[2], Integer.parseInt(cardInfo[3]),
 						Integer.parseInt(cardInfo[4]), Integer.parseInt(cardInfo[5]), Integer.parseInt(cardInfo[6]),
 						Integer.parseInt(cardInfo[7]), Integer.parseInt(cardInfo[8])));
@@ -41,5 +41,8 @@ public class Deck {
 	}
 	public void addCard(Card c) {
 		deck.add(c);
+	}
+	public boolean isEmpty() {
+		return deck.isEmpty();
 	}
 }

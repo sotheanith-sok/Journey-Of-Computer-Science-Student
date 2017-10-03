@@ -23,10 +23,10 @@ public class cardPanel extends JTabbedPane{
 		setForeground(Color.BLACK);
 		setBackground(Color.WHITE);
 		//cards.add(new Card("Test" , "Just a Test"));
-		cards.add(new Card1());
-		cards.add(new Card2());
-		for(Card c : cards)
+		Deck deck = new Deck();
+		while(!deck.isEmpty())
 		{
+			Card c=deck.removeCard();
 			JButton temp = new JButton("<html>" + c.getName() + "<br />" + c.getDescription() + "</html>");
 			temp.setName(c.getName());
 			temp.addActionListener(new ActionListener(){
