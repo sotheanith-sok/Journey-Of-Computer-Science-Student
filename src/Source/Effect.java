@@ -55,8 +55,8 @@ public class Effect {
 
 	private static boolean checkLocation(Card c, Player p) {
 		String[] playableLocation = c.getLocation().split(",");
-		for (int i =0;i<playableLocation.length;i++) {
-			if(playableLocation[i]==p.getLocation())
+		for (int i = 0; i < playableLocation.length; i++) {
+			if (playableLocation[i] == p.getLocation())
 				return true;
 		}
 		return false;
