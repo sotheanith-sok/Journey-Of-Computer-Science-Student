@@ -32,6 +32,8 @@ import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 
 import javax.swing.JScrollBar;
 
@@ -77,7 +79,7 @@ public class Frame extends JFrame {
 		   
 		    //g2.scale(1.58, 1);
 		    
-		    g2.scale(4, 2);
+		    g2.scale(1, 1);
 		    g2.drawImage(map,0,0,null); // paints the image of the map onto the background 
 		  }
 		 	
@@ -111,16 +113,24 @@ public class Frame extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(new GridLayout(0, 1, 0, 0));
 		
+		contentPane.setLayout(new GridBagLayout());
+		GridBagConstraints gbc = new GridBagConstraints();
+		gbc.fill = GridBagConstraints.BOTH;
 		
-		
-		
+
 		
 ///////////////////JSCROLLPANE////////////////////////////		
 		JPanel mapCanvas = new mapPanelBackground();
 		JScrollPane mapPanel = new JScrollPane();
-		contentPane.add(mapPanel);
+		
+		gbc.gridx = 0;
+		gbc.gridy = 0;
+		gbc.gridwidth = 3;
+		gbc.gridheight = 2;
+		gbc.weightx = 1;
+		gbc.weighty = 0.80;
+		contentPane.add(mapPanel,gbc);
 		contentPane.updateUI();
 		mapPanel.setHorizontalScrollBarPolicy(
 				   JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
@@ -145,7 +155,13 @@ public class Frame extends JFrame {
 ////////////////////UI BUTTONS/////////////////////////
 		JPanel playerPanel = new JPanel();
 		playerPanel.setBackground(Color.DARK_GRAY);
-		contentPane.add(playerPanel);
+		gbc.gridx = 0;
+		gbc.gridy = 2;
+		gbc.gridwidth = 3;
+		gbc.gridheight = 1;
+		gbc.weightx = 1;
+		gbc.weighty = 0.2;
+		contentPane.add(playerPanel,gbc);
 		playerPanel.setBounds(getX(), getY(), getWidth(), getHeight()/2);
 		playerPanel.setLayout(new GridLayout(0, 2, 0, 0));
 		
