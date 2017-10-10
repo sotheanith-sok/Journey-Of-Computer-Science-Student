@@ -79,7 +79,7 @@ public class Frame extends JFrame {
 		   
 		    //g2.scale(1.58, 1);
 		    
-		    g2.scale(1, 1);
+		    g2.scale(4, 2);
 		    g2.drawImage(map,0,0,null); // paints the image of the map onto the background 
 		  }
 		 	
@@ -166,9 +166,14 @@ public class Frame extends JFrame {
 		playerPanel.setLayout(new GridLayout(0, 2, 0, 0));
 		
 		JTabbedPane cardPanel = new cardPanel();
+		JPanel userInterfacePanel = new JPanel(); // Holds the card panel and control panel in a grid layout 
+		userInterfacePanel.setLayout(new GridLayout(0,2,0,0));
+		JPanel controlPanel = new controlPanel();
+		playerPanel.add(userInterfacePanel);
+		//playerPanel.add(cardPanel);
+		userInterfacePanel.add(controlPanel);
+		userInterfacePanel.add(cardPanel);
 		
-		playerPanel.add(cardPanel);
-
 		JPanel infoPanel = new JPanel();
 		playerPanel.add(infoPanel);
 		infoPanel.setLayout(new GridLayout(0, 1, 0, 0));

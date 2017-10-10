@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
-import Cards.*;
+//import Cards.*;
 
 public class cardPanel extends JTabbedPane{
 
@@ -29,14 +29,18 @@ public class cardPanel extends JTabbedPane{
 			Card c=deck.removeCard();
 			JButton temp = new JButton("<html>" + c.getName() + "<br />" + c.getDescription() + "</html>");
 			temp.setName(c.getName());
+			//int currentCardIndex = cardButton.size();
+			
 			temp.addActionListener(new ActionListener(){
-
+			
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
 					Effect.changePlayer(c, Frame.players.get(0));
 					Frame.playerScore.get(0).setText("Skill Chips: " + Frame.players.get(0).getSkillChips() + "     Quality Points: " + Frame.players.get(0).getQualityPoints() +"     Learning: " + Frame.players.get(0).getLearning() + "     Craft: " + Frame.players.get(0).getCraft() + "     Integrity: " + Frame.players.get(0).getIntegrity() );
 					temp.setEnabled(false);
-					//removeTabAt(index);
+					
+					remove(temp);
+					
 				}});
 			cardButton.add(temp);
 			addTab(cardButton.get(cardButton.size()-1).getName(), null, cardButton.get(cardButton.size()-1), null);

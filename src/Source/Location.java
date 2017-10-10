@@ -16,7 +16,11 @@ public class Location {
 	{
 		
 	}
-	
+	public int getLocationX(String name)
+	{
+		
+		return 0;
+	}
 	public String getLocation(String locationName)
 	{
 		locationName = locationName.toUpperCase();
