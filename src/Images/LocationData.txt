@@ -1,0 +1,21 @@
+Room of Retirement|121|1103|North Hall
+Elevators|425|1141|LA5,North Hall
+ECS 308|580|1141|South Hall
+Lactation Lounge|868|1137|South Hall
+South Hall|602|930|ECS 302,Eat Club,CECS Conference Room,Lactation Lounge,ECS 308,East Walkway,North Hall
+North Hall|131|903|West Walkway,Computer Lab,Room of Retirement,Elevators,ECS 302,South Hall
+Computer Lab|132|772|North Hall
+ECS 302|435|793|North Hall,South Hall
+Eat Club|736|805|South Hall
+CECS Conference Room|898|802|South Hall
+West Walkway|4|966|Rec Center,Library,North Hall
+Library|14|1424|West Walkway,LA5
+LA5|343|1425|Elevators,Library,Bratwurst Hall
+Bratwurst Hall|830|1396|East Walkway,LA5
+East Walkway|1068|1002|Bratwurst Hall,South Hall,Forbidden Parking
+Forbidden Parking|743|592|Rec Center,East Walkway
+Rec Center|322|586|Pyramid,West Walkway,Forbidden Parking,Student Parking
+Student Parking|736|291|Japanese Garden,Pyramid,Rec Center,Forbidden Parking
+Pyramid|303|329|Japanese Garden,Rec Center,Student Parking,George Allen Field
+Japanese Garden|320|148|Pyramid,Student Parking
+George Allen Field|24|391|Pyramid
