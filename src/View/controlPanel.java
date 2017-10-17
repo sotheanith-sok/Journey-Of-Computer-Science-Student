@@ -21,6 +21,7 @@ import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
 import javax.swing.ListModel;
 
 import Model.GameModel;
@@ -43,8 +44,8 @@ public class controlPanel extends JPanel {
 		leftPanel = new leftPanel(list);
 
 		// Right Panel
-		JPanel rightPanel = new rightPanel();
-
+		//JPanel rightPanel = new rightPanel();
+		JTabbedPane rightPanel = new rightPanel();
 		GridBagConstraints gbc = new GridBagConstraints();
 		gbc.fill = GridBagConstraints.HORIZONTAL;
 		;

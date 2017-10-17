@@ -1,5 +1,5 @@
-Test Card 1|TEST_CARD_1|Room|1|1|1|1|1|1
-Test Card 2|TEST_CARD_2|Room|2|2|2|2|2|2
-Test Card 3|TEST_CARD_3|Room|3|3|3|3|3|3
-Test Card 4|TEST_CARD_4|Room|4|4|4|4|4|4
-Test Card 5|TEST_CARD_5|Room|5|5|5|5|5|5
+00|TEST_CARD_1|Room|1|1|1|1|1|1
+01|TEST_CARD_2|Room|2|2|2|2|2|2
+02|TEST_CARD_3|Room|3|3|3|3|3|3
+03|TEST_CARD_4|Room|4|4|4|4|4|4
+04|TEST_CARD_5|Room|5|5|5|5|5|5

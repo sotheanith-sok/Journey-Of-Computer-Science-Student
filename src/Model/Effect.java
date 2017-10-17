@@ -1,4 +1,4 @@
-package Source;
+package Model;
 
 /**
  * This is an effect class which perform effect of the card on a player.

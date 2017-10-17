@@ -48,5 +48,10 @@ public class Deck {
 	public int size() {
 		return deck.size();
 	}
+	
+	public ArrayList<Card> getDeck()
+	{
+		return deck;
+	}
 
 }

@@ -32,6 +32,18 @@ public class Card {
 	 */
 	private int effectModifier = -1;
 
+	/**
+	 * Constructor for a card
+	 * @param name	Corresponds to the card image number i.e cardm00.png , the name would be 00 for that card.
+	 * @param description
+	 * @param location
+	 * @param learning
+	 * @param craft
+	 * @param integrity
+	 * @param year
+	 * @param effectIndex
+	 * @param effectModifier
+	 */
 	public Card(String name, String description, String location, int learning, int craft, int integrity, int year,
 			int effectIndex, int effectModifier) {
 		this.name = name;
