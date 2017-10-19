@@ -20,8 +20,8 @@ public class GameView extends JFrame {
 	private double width;
 	private double height;
 	private JPanel mapPanel;
-	private JPanel controlPanel;
-	private JPanel infoPanel;
+	private controlPanel controlPanel;
+	private infoPanel infoPanel;
 
 	public GameView(GameModel model) {
 		// Initialize Values
@@ -87,11 +87,11 @@ public class GameView extends JFrame {
 		add(mainPanel);
 	}
 
-	public JPanel getControlPanel() {
+	public controlPanel getControlPanel() {
 		return controlPanel;
 	}
 
-	public JPanel getInfoPanel() {
+	public infoPanel getInfoPanel() {
 		return infoPanel;
 	}
 

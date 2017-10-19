@@ -24,6 +24,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.ListModel;
 
+import Model.Deck;
 import Model.GameModel;
 import Model.Player;
 
@@ -31,7 +32,7 @@ public class controlPanel extends JPanel {
 	private JList<String> list;
 	private DefaultListModel<String> availableLocation;
 	JPanel leftPanel;
-	JPanel rightPanel;
+	rightPanel rightPanel;
 	GameModel model;
 
 	public controlPanel(GameModel model) {
@@ -45,7 +46,8 @@ public class controlPanel extends JPanel {
 
 		// Right Panel
 		//JPanel rightPanel = new rightPanel();
-		JTabbedPane rightPanel = new rightPanel();
+		
+		rightPanel = new rightPanel(model.getDeck());
 		GridBagConstraints gbc = new GridBagConstraints();
 		gbc.fill = GridBagConstraints.HORIZONTAL;
 		;
@@ -89,6 +91,11 @@ public class controlPanel extends JPanel {
 
 	public String getSelectValue() {
 		return list.getSelectedValue();
+	}
+	
+	public rightPanel getRightPanel()
+	{
+		return rightPanel;
 	}
 
 }

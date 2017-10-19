@@ -3,6 +3,7 @@ package Model;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.*;
+import Cards.*;
 /**
  * 
  * @author Sotheanith Sok
@@ -11,27 +12,67 @@ import java.util.*;
  */
 public class Deck {
 	private ArrayList<Card> deck;
-	private int discardCard=0;
+	private ArrayList<Card> availableCards;
+	private int discardCard=0 , maxDeckSize = 5;
+	public int cardIndex = 0;
+	public HashMap cardMap =new HashMap();
 	public Deck() {
+	
+		availableCards = new ArrayList<Card>();
+		instantiateAvailableCards();
 		deck = new ArrayList<Card>();
 		instantiateDeck();
+		
 	}
 
+	public void instantiateAvailableCards()
+	{
+		Card 
+			card00 = new Card00(),
+			card01 = new Card01(), 
+			card02 = new Card02();
+		
+		ac(card00);
+		ac(card01);
+		ac(card02);
+		for(Card c : availableCards)
+		{
+			cardMap.put(c.getName(), c);
+		}
+		//Collections.shuffle(availableCards);
+		
+	}
+	public void ac(Card c)
+	{
+		availableCards.add(c);
+	}
 	public void instantiateDeck() {
-		Scanner in=null; 
+		/*Scanner in=null; 
 		try {
 			in = new Scanner(new File("src/Images/Card_Information.txt"));
 			while (in.hasNextLine()) {
 				String[] cardInfo = in.nextLine().split("\\|");
-				deck.add(new Card(cardInfo[0], cardInfo[1], cardInfo[2], Integer.parseInt(cardInfo[3]),
+				/*deck.add(new Card(cardInfo[0], cardInfo[1], cardInfo[2], Integer.parseInt(cardInfo[3]),
 						Integer.parseInt(cardInfo[4]), Integer.parseInt(cardInfo[5]), Integer.parseInt(cardInfo[6]),
 						Integer.parseInt(cardInfo[7]), Integer.parseInt(cardInfo[8])));
+				//deck.add();
+				
 			}
 			Collections.shuffle(deck);
 		} catch (FileNotFoundException fnoe) {
 			fnoe.printStackTrace();
 		} finally{
 			in.close();
+		}
+		*/
+		for(int i = 0 ; i < maxDeckSize ; i++ )
+		{
+			if(availableCards.size() > 0)
+			{
+				deck.add(availableCards.get(0));
+				availableCards.remove(0);
+			}
+			
 		}
 	}
 	public Card removeCard() {
@@ -52,6 +93,20 @@ public class Deck {
 	public ArrayList<Card> getDeck()
 	{
 		return deck;
+	}
+	public int getCardIndex()
+	{
+		
+		return cardIndex;
+	}
+	public void setCardIndex(int cardIndex)
+	{
+		
+		this.cardIndex = cardIndex ;
+	}
+	public HashMap getCardMap()
+	{
+		return cardMap;
 	}
 
 }

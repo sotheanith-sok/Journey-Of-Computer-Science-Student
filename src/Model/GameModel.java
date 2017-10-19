@@ -29,6 +29,10 @@ public class GameModel {
 		return listOfPlayer;
 	}
 
+	public Deck getDeck()
+	{
+		return deck;
+	}
 	public int getDeckSize() {
 		return deck.size();
 	}
@@ -63,5 +67,5 @@ public class GameModel {
 		}
 		return userName;
 	}
-
+	
 }
