@@ -5,24 +5,24 @@ import Model.Card;
 import Model.GameModel;
 import Model.Player;
 import View.GameView;
-public class Card01 extends Card {
+public class Card08 extends Card {
 
-	public Card01(String name, String cName, String effect , GameModel model , GameView view) {
+	public Card08(String name, String cName, String effect , GameModel model , GameView view) {
 		super(name, cName ,effect, model, view);
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Card01()
+	public Card08()
 	{
 		//super();
-		super.setName("01");
-		super.setCName("Math 122");
+		super.setName("08");
+		super.setCName("Enjoying The Peace");
 		super.setEffect("");
 	}
 
 	@Override
 	public Boolean requirement(Player player ,String location, int stat) {
-		if(player.getLocation().equals("Library"))
+		if(player.getLocation().equals("Japanese Garden"))
 		{
 			return true;
 		}

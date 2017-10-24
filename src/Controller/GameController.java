@@ -60,6 +60,8 @@ public class GameController {
 					temp.effect(player);
 					System.out.println(temp.getName());
 					System.out.println("Card is : " + temp.getName());
+					String effectDescription = "played " + temp.getCName() + " and " + temp.getEffect();
+					view.getInfoPanel().updateFeedback(player, effectDescription);
 					model.getDeck().getDeck().remove(temp);
 					if(model.getDeck().getCardIndex() == 0)
 					{

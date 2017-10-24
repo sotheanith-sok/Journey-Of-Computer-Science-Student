@@ -13,7 +13,7 @@ public class GameModel {
 	Location location;
 
 	public GameModel(String n) {
-		deck = new Deck();
+		deck = new Deck(this);
 		listOfPlayer = new Player[3];
 		listOfPlayer[0] = new Player(promptName());
 		listOfPlayer[1] = new Player("Abe");

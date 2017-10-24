@@ -65,5 +65,9 @@ public class infoPanel extends JPanel {
 	public void updateFeedback(Player p) {
 		feedback.append(p.getName()+" moves to "+p.getLocation()+"\n");
 	}
+	public void updateFeedback(Player p , String s)
+	{
+		feedback.append(p.getName() + " " + s);
+	}
 
 }

@@ -6,18 +6,18 @@ import Model.Player;
 import View.GameView;
 
 
-public class Card00 extends Card{
+public class Card10 extends Card{
 
-	public Card00(String name, String cName, String effect , GameModel model , GameView view) {
+	public Card10(String name, String cName, String effect , GameModel model , GameView view) {
 		super(name, cName ,effect, model, view);
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Card00()
+	public Card10()
 	{
 		//super();
-		super.setName("00");
-		super.setCName("CECS 100");
+		super.setName("10");
+		super.setCName("CECS 105");
 		super.setEffect("gained 1 Learning Chip");
 	}
 

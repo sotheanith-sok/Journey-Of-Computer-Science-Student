@@ -4,6 +4,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.*;
 import Cards.*;
+import View.GameView;
 /**
  * 
  * @author Sotheanith Sok
@@ -14,10 +15,12 @@ public class Deck {
 	private ArrayList<Card> deck;
 	private ArrayList<Card> availableCards;
 	private int discardCard=0 , maxDeckSize = 5;
+	private GameModel model;
+	private GameView view;
 	public int cardIndex = 0;
 	public HashMap cardMap =new HashMap();
-	public Deck() {
-	
+	public Deck(GameModel model) {
+		this.model = model;
 		availableCards = new ArrayList<Card>();
 		instantiateAvailableCards();
 		deck = new ArrayList<Card>();
@@ -30,16 +33,33 @@ public class Deck {
 		Card 
 			card00 = new Card00(),
 			card01 = new Card01(), 
-			card02 = new Card02();
+			card02 = new Card02(),
+			card03 = new Card03(),
+			card04 = new Card04(),
+			card05 = new Card05(),
+			card06 = new Card06(),
+			card07 = new Card07(),
+			card08 = new Card08(),
+			card09 = new Card09(model),
+			card10 = new Card10();
 		
 		ac(card00);
 		ac(card01);
 		ac(card02);
+		ac(card03);
+		ac(card04);
+		ac(card05);
+		ac(card06);
+		ac(card07);
+		ac(card08);
+		ac(card09);
+		ac(card10);
+		
 		for(Card c : availableCards)
 		{
 			cardMap.put(c.getName(), c);
 		}
-		//Collections.shuffle(availableCards);
+		Collections.shuffle(availableCards);
 		
 	}
 	public void ac(Card c)
@@ -65,6 +85,7 @@ public class Deck {
 			in.close();
 		}
 		*/
+		
 		for(int i = 0 ; i < maxDeckSize ; i++ )
 		{
 			if(availableCards.size() > 0)
