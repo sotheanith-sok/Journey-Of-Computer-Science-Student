@@ -40,6 +40,8 @@ public class Card00 extends Card{
 		player.setLearning(player.getLearning() + 1);
 		
 	}
+
+
 	
 
 	

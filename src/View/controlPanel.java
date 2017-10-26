@@ -47,7 +47,7 @@ public class controlPanel extends JPanel {
 		// Right Panel
 		//JPanel rightPanel = new rightPanel();
 		
-		rightPanel = new rightPanel(model.getDeck());
+		rightPanel = new rightPanel(model.getPlayerList()[0].getHand());
 		GridBagConstraints gbc = new GridBagConstraints();
 		gbc.fill = GridBagConstraints.HORIZONTAL;
 		;

@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 public class GameModel {
 	private Deck deck;
 	Player[] listOfPlayer;
+
 	private int discardCard = 0;
 	private int playableCard = 0;
 	Location location;
@@ -15,9 +16,9 @@ public class GameModel {
 	public GameModel(String n) {
 		deck = new Deck(this);
 		listOfPlayer = new Player[3];
-		listOfPlayer[0] = new Player(promptName());
-		listOfPlayer[1] = new Player("Abe");
-		listOfPlayer[2] = new Player("Cal");
+		listOfPlayer[0] = new Player(this, promptName());
+		listOfPlayer[1] = new Player(this, "Abe");
+		listOfPlayer[2] = new Player(this, "Cal");
 		location = new Location();
 	}
 

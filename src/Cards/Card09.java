@@ -44,7 +44,7 @@ public class Card09 extends Card {
 	@Override
 	public void effect(Player player) {
 		// TODO Auto-generated method stub
-		if(getModel().getDeck().getDeck().size()-1 > 0)
+		if(getModel().getPlayerList()[0].getHand().size()-1 > 0)
 		{
 			
 		
@@ -61,7 +61,7 @@ public class Card09 extends Card {
 						ArrayList<String> currentHand = new ArrayList<String>();
 						currHand = new ArrayList<Card>();
 						
-						for(Card c : getModel().getDeck().getDeck())
+						for(Card c : getModel().getPlayerList()[0].getHand())
 						{
 							if(!c.getCName().equals(getCName()))
 							{
@@ -97,14 +97,14 @@ public class Card09 extends Card {
 				{
 					if(discardChip.equals(cHand[i]))
 					{
-						getModel().getDeck().getDeck().remove(getModel().getDeck().getCardMap().get(currHand.get(i).getName()));
-						if(getModel().getDeck().getCardIndex() == 0)
+						getModel().getPlayerList()[0].getHand().remove(getModel().getDeck().getCardMap().get(currHand.get(i).getName()));
+						if(getModel().getPlayerList()[0].getHand().getCardIndex() == 0)
 						{
-							getModel().getDeck().setCardIndex(0);
+							getModel().getPlayerList()[0].getHand().setCardIndex(0);
 						}
 						else
 						{
-							getModel().getDeck().setCardIndex(getModel().getDeck().cardIndex - 1);
+							getModel().getPlayerList()[0].getHand().setCardIndex(getModel().getPlayerList()[0].getHand().getCardIndex() - 1);
 						}
 					
 					}

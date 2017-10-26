@@ -1,5 +1,7 @@
 package View;
 import Model.Deck;
+import Model.Hand;
+
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -18,11 +20,13 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
 public class rightPanel extends JPanel{ //extends JPanel
-	public Deck deck;
+	//public Deck deck;
 	public ArrayList<JLabel> cardList;
 	public JLabel cardDeck;
-	public rightPanel(Deck deckP) {
-		deck = deckP;
+	Hand userHand;
+	public rightPanel(Hand hand) {
+		//deck = deckP;
+		userHand = hand;
 		cardList = new ArrayList<JLabel>();
 		cardDeck = new JLabel();
 		
@@ -47,20 +51,20 @@ public class rightPanel extends JPanel{ //extends JPanel
 					deck.setCardIndex(0);
 				}
 				*/
-				deck.setCardIndex(deck.getCardIndex() + 1);
-				if(deck.getCardIndex() >= deckSize)
+				userHand.setCardIndex(userHand.getCardIndex() + 1);
+				if(userHand.getCardIndex() >= deckSize)
 				{
-					deck.setCardIndex(0);
+					userHand.setCardIndex(0);
 				}
-				if(deck.size() > 0)
+				if(userHand.size() > 0)
 				{
-				cardDeck.setIcon(cardList.get(deck.getCardIndex()).getIcon());
+				cardDeck.setIcon(cardList.get(userHand.getCardIndex()).getIcon());
 				}
 				else
 				{
 					cardDeck.setIcon(null);
 				}
-				System.out.println("Index : " + deck.getCardIndex());
+				System.out.println("Index : " + userHand.getCardIndex());
 				
 				
 				
@@ -105,7 +109,7 @@ public class rightPanel extends JPanel{ //extends JPanel
 			
 		}*/
 		updateCards();
-		cardDeck.setIcon(cardList.get(deck.getCardIndex()).getIcon());
+		cardDeck.setIcon(cardList.get(userHand.getCardIndex()).getIcon());
 	//	deck.setCardIndex(deck.getCardIndex() + 1);
 		add(cardDeck);
 		
@@ -117,11 +121,11 @@ public class rightPanel extends JPanel{ //extends JPanel
 	{
 		
 		cardList.removeAll(cardList);
-		for(int i = 0 ; i < deck.size(); i++)
+		for(int i = 0 ; i < userHand.size(); i++)
 		{
 			
 			JLabel card = new JLabel();
-			String cardImgNumber =deck.getDeck().get(i).getName(); 
+			String cardImgNumber =userHand.get(i).getName(); 
 			
 			card.setName(cardImgNumber);
 			String imgUrl = "src/Images/cardm" + cardImgNumber + ".png";
@@ -139,9 +143,9 @@ public class rightPanel extends JPanel{ //extends JPanel
 			cardList.add(card);
 			
 		}
-		if(deck.size() > 0)
+		if(userHand.size() > 0)
 		{
-		cardDeck.setIcon(cardList.get(deck.getCardIndex()).getIcon());
+		cardDeck.setIcon(cardList.get(userHand.getCardIndex()).getIcon());
 		}
 		else
 		{

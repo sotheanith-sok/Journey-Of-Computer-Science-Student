@@ -11,24 +11,27 @@ import View.GameView;
  *
  *This is deck used to initialize and store all cards. It is also contains function for add and remove card from the deck.
  */
-public class Deck {
-	private ArrayList<Card> deck;
-	private ArrayList<Card> availableCards;
+public class Deck extends ArrayList<Card>{
+//	private ArrayList<Card> deck;
+	//private ArrayList<Card> hand;
+	//private ArrayList<Card> availableCards;
 	private int discardCard=0 , maxDeckSize = 5;
 	private GameModel model;
 	private GameView view;
-	public int cardIndex = 0;
+	//public int cardIndex = 0;
 	public HashMap cardMap =new HashMap();
-	public Deck(GameModel model) {
+	
+	
+	
+	public Deck(GameModel model)  {
 		this.model = model;
-		availableCards = new ArrayList<Card>();
-		instantiateAvailableCards();
-		deck = new ArrayList<Card>();
 		instantiateDeck();
+		//availableCards = new ArrayList<Card>();
+		//instantiateDeck();
 		
 	}
 
-	public void instantiateAvailableCards()
+	public void instantiateDeck()
 	{
 		Card 
 			card00 = new Card00(),
@@ -43,48 +46,27 @@ public class Deck {
 			card09 = new Card09(model),
 			card10 = new Card10();
 		
-		ac(card00);
-		ac(card01);
-		ac(card02);
-		ac(card03);
-		ac(card04);
-		ac(card05);
-		ac(card06);
-		ac(card07);
-		ac(card08);
-		ac(card09);
-		ac(card10);
+		add(card00);
+		add(card01);
+		add(card02);
+		add(card03);
+		add(card04);
+		add(card05);
+		add(card06);
+		add(card07);
+		add(card08);
+		add(card09);
+		add(card10);
 		
-		for(Card c : availableCards)
+		for(Card c : this)
 		{
 			cardMap.put(c.getName(), c);
 		}
-		Collections.shuffle(availableCards);
+		Collections.shuffle(this);
 		
 	}
-	public void ac(Card c)
-	{
-		availableCards.add(c);
-	}
+/*
 	public void instantiateDeck() {
-		/*Scanner in=null; 
-		try {
-			in = new Scanner(new File("src/Images/Card_Information.txt"));
-			while (in.hasNextLine()) {
-				String[] cardInfo = in.nextLine().split("\\|");
-				/*deck.add(new Card(cardInfo[0], cardInfo[1], cardInfo[2], Integer.parseInt(cardInfo[3]),
-						Integer.parseInt(cardInfo[4]), Integer.parseInt(cardInfo[5]), Integer.parseInt(cardInfo[6]),
-						Integer.parseInt(cardInfo[7]), Integer.parseInt(cardInfo[8])));
-				//deck.add();
-				
-			}
-			Collections.shuffle(deck);
-		} catch (FileNotFoundException fnoe) {
-			fnoe.printStackTrace();
-		} finally{
-			in.close();
-		}
-		*/
 		
 		for(int i = 0 ; i < maxDeckSize ; i++ )
 		{
@@ -96,25 +78,25 @@ public class Deck {
 			
 		}
 	}
+	*/
 	public Card removeCard() {
-		Card c = deck.get(0);
-		deck.remove(0);
+		Card c = this.get(0);
+		this.remove(0);
 		return c;
 	}
-	public void addCard(Card c) {
-		deck.add(c);
-	}
-	public boolean isEmpty() {
-		return deck.isEmpty();
-	}
-	public int size() {
-		return deck.size();
-	}
 	
+	
+	/*public ArrayList<Card> getHand()
+	{
+		return hand;
+	}*/
+	/*
 	public ArrayList<Card> getDeck()
 	{
 		return deck;
-	}
+	}*/
+	
+	/*
 	public int getCardIndex()
 	{
 		
@@ -124,7 +106,7 @@ public class Deck {
 	{
 		
 		this.cardIndex = cardIndex ;
-	}
+	}*/
 	public HashMap getCardMap()
 	{
 		return cardMap;

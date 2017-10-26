@@ -6,12 +6,17 @@ import javax.swing.JOptionPane;
 
 public class Player {
 
+	
 	int score, skillChips, qualityPoints, learning, craft, integrity;
 	String name = "";
 	String location = "South Hall";
+	GameModel model;
+	Hand hand;
 
-	public Player() {
+	public Player(GameModel model) {
 		name = "AI ";
+		this.model = model;
+		hand = new Hand(model);
 		Random rand = new Random();
 		learning = rand.nextInt(3) + 1;
 		craft = rand.nextInt(3) + 1;
@@ -19,8 +24,10 @@ public class Player {
 		System.out.println(name + " " + learning + " " + craft + " " + integrity);
 	}
 
-	public Player(String n) {
+	public Player(GameModel model, String n) {
 		name = n;
+		this.model = model;
+		hand = new Hand(model);
 		Random rand = new Random();
 		learning = rand.nextInt(3) + 1;
 		craft = rand.nextInt(3) + 1;
@@ -120,5 +127,11 @@ public class Player {
 	public void setLocation(String location) {
 		this.location = location;
 	}
-
+	
+	public Hand getHand()
+	{
+		return hand;
+	}
+	
+	
 }

@@ -53,7 +53,7 @@ public class GameController {
 			
 			if(model.getDeckSize() > 0)
 			{
-				Card temp =(Card) model.getDeck().getCardMap().get(model.getDeck().getDeck().get(model.getDeck().getCardIndex()).getName());
+				Card temp =(Card) model.getDeck().getCardMap().get(model.getPlayerList()[0].getHand().get(model.getPlayerList()[0].getHand().getCardIndex()).getName());
 				Player player = model.getPlayerList()[0];
 				if(temp.requirement(player, player.getLocation(), 0))
 				{
@@ -62,14 +62,14 @@ public class GameController {
 					System.out.println("Card is : " + temp.getName());
 					String effectDescription = "played " + temp.getCName() + " and " + temp.getEffect();
 					view.getInfoPanel().updateFeedback(player, effectDescription);
-					model.getDeck().getDeck().remove(temp);
-					if(model.getDeck().getCardIndex() == 0)
+					model.getPlayerList()[0].getHand().remove(temp);
+					if(model.getPlayerList()[0].getHand().getCardIndex() == 0)
 					{
-						model.getDeck().setCardIndex(0);
+						model.getPlayerList()[0].getHand().setCardIndex(0);
 					}
 					else
 					{
-						model.getDeck().setCardIndex(model.getDeck().cardIndex - 1);
+						model.getPlayerList()[0].getHand().setCardIndex(model.getPlayerList()[0].getHand().getCardIndex() - 1);
 					}
 					System.out.println("Deck Size : " + model.getDeckSize());
 				}//if requirementment

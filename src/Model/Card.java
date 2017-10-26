@@ -58,6 +58,7 @@ public abstract class Card {
 	
 	public abstract void effect(Player player);
 	
+	
 	public abstract Boolean requirement(Player player, String location , int stat);
 	
 }

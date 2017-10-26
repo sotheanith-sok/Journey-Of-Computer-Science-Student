@@ -57,7 +57,7 @@ public class infoPanel extends JPanel {
 				listOfPlayer[1].getCraft(), listOfPlayer[1].getIntegrity(), listOfPlayer[1].getQualityPoints());
 		out += String.format("%-20s%-20d%-20d%-20d%-20d\n\n", listOfPlayer[2].getName(), listOfPlayer[2].getLearning(),
 				listOfPlayer[2].getCraft(), listOfPlayer[2].getIntegrity(), listOfPlayer[2].getQualityPoints());
-		out += String.format("%-40s%-40s\n", "Card in deck: " + model.getDeckSize(),
+		out += String.format("%-40s%-40s\n", "Cards left in deck: " + model.getDeckSize(),
 				"Discards out of play: " + model.getDiscardCardSize());
 		out += "You are " + listOfPlayer[0].getName() + " and you are in " + listOfPlayer[0].getLocation();
 		scoreBoard.setText(out);
