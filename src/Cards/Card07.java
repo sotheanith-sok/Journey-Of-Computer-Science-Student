@@ -15,7 +15,7 @@ public class Card07 extends Card {
 		//super();
 		super.setName("07");
 		super.setCName("Finding The Lab , Play At Elevators");
-		super.setEffect("gained 1 Integrity Chip");
+		super.setEffect("gain 1 Integrity Chip");
 	}
 	
 	
@@ -34,6 +34,13 @@ public class Card07 extends Card {
 	public void effect(Player player) {
 		// TODO Auto-generated method stub
 		player.setIntegrity(player.getIntegrity() + 1);
+		setEffect("gained 1 Integrity Chip");
+	}
+
+	@Override
+	public void fail(Player player) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

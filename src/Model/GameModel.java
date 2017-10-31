@@ -5,6 +5,8 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
+import View.GameView;
+
 public class GameModel {
 	private Deck deck;
 	Player[] listOfPlayer;
@@ -12,7 +14,7 @@ public class GameModel {
 	private int discardCard = 0;
 	private int playableCard = 0;
 	Location location;
-
+	
 	public GameModel(String n) {
 		deck = new Deck(this);
 		listOfPlayer = new Player[3];
@@ -21,7 +23,7 @@ public class GameModel {
 		listOfPlayer[2] = new Player(this, "Cal");
 		location = new Location();
 	}
-
+	
 	public void play() {
 
 	}

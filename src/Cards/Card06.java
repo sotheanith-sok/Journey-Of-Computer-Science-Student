@@ -15,7 +15,7 @@ public class Card06 extends Card {
 		//super();
 		super.setName("06");
 		super.setCName("Exercising Mind and Body");
-		super.setEffect("gained 1 Integrity Chip");
+		super.setEffect("gain 1 Integrity Chip");
 	}
 	
 	
@@ -34,6 +34,13 @@ public class Card06 extends Card {
 	public void effect(Player player) {
 		// TODO Auto-generated method stub
 		player.setIntegrity(player.getIntegrity() + 1);
+		setEffect("gained 1 Integrity Chip");
+	}
+
+	@Override
+	public void fail(Player player) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

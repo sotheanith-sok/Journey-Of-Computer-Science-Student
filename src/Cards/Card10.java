@@ -18,7 +18,7 @@ public class Card10 extends Card{
 		//super();
 		super.setName("10");
 		super.setCName("CECS 105");
-		super.setEffect("gained 1 Learning Chip");
+		super.setEffect("gain 1 Learning Chip");
 	}
 
 
@@ -38,6 +38,13 @@ public class Card10 extends Card{
 		// TODO Auto-generated method stub
 		//player.setQualityPoints();
 		player.setLearning(player.getLearning() + 1);
+		setEffect("gained 1 Learning Chip");
+		
+	}
+
+	@Override
+	public void fail(Player player) {
+		// TODO Auto-generated method stub
 		
 	}
 	

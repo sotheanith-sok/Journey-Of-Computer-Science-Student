@@ -2,6 +2,8 @@ package Model;
 
 import java.util.ArrayList;
 
+import Cards.Card14;
+
 public class Hand extends ArrayList<Card> {
 
 	//private ArrayList<Card> hand;
@@ -17,7 +19,7 @@ public class Hand extends ArrayList<Card> {
 	}
 	private void instantiateHand(int maxSize)
 	{
-		for(int i = 0 ; i < maxSize ; i++ )
+		for(int i = size() ; i < maxSize ; i++ )
 		{
 			if(deck.size() > 0)
 			{
@@ -42,6 +44,7 @@ public class Hand extends ArrayList<Card> {
 		
 		this.cardIndex = cardIndex ;
 	}
+	
 	
 	
 

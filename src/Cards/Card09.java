@@ -14,20 +14,13 @@ public class Card09 extends Card {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Card09()
-	{
-		//super();
-		super.setName("09");
-		super.setCName("");
-		super.setEffect("");
-	}
 
 	public Card09(GameModel model)
 	{
 		super(model);
 		super.setName("09");
 		super.setCName("Parking Violation");
-		super.setEffect("");
+		super.setEffect("gain 1 Learning chip or Discard 1 game card from your hand to get another learning chip");
 	}
 	@Override
 	public Boolean requirement(Player player ,String location, int stat) {
@@ -125,5 +118,12 @@ public class Card09 extends Card {
 			setEffect("gained 1 Learning Chip");
 		}
 	}//effect()
+
+
+	@Override
+	public void fail(Player player) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

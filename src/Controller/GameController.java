@@ -20,11 +20,19 @@ public class GameController {
 		this.view = view;
 		view.addMoveButtonListener(new MoveButtonListener());
 		view.addPlayCardButtonListener(new PlayCardButtonListener());
+		model.getPlayerList()[0].setView(view);
 	}
 
 	class DrawCardButtonListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-
+			if(model.getDeckSize() > 0)
+			{
+				
+			}//if
+			else
+			{
+				//(JButton)e.getSource().setEnabled(false);
+			}
 		}
 	}
 
@@ -50,33 +58,35 @@ public class GameController {
 
 	class PlayCardButtonListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			
-			if(model.getDeckSize() > 0)
+			Player player = model.getPlayerList()[0];
+			if(model.getPlayerList()[0].getHand().size() > 0)
 			{
-				Card temp =(Card) model.getDeck().getCardMap().get(model.getPlayerList()[0].getHand().get(model.getPlayerList()[0].getHand().getCardIndex()).getName());
-				Player player = model.getPlayerList()[0];
-				if(temp.requirement(player, player.getLocation(), 0))
+				Card currentCard =(Card) model.getDeck().getCardMap().get(model.getPlayerList()[0].getHand().get(model.getPlayerList()[0].getHand().getCardIndex()).getName());
+				
+				if(currentCard.requirement(player, player.getLocation(), 0))
 				{
-					temp.effect(player);
-					System.out.println(temp.getName());
-					System.out.println("Card is : " + temp.getName());
-					String effectDescription = "played " + temp.getCName() + " and " + temp.getEffect();
+					currentCard.effect(player);
+					System.out.println(currentCard.getName());
+					System.out.println("Card is : " + currentCard.getName());
+					String effectDescription = "played " + currentCard.getCName() + " and " + currentCard.getEffect();
 					view.getInfoPanel().updateFeedback(player, effectDescription);
-					model.getPlayerList()[0].getHand().remove(temp);
-					if(model.getPlayerList()[0].getHand().getCardIndex() == 0)
-					{
-						model.getPlayerList()[0].getHand().setCardIndex(0);
-					}
-					else
-					{
-						model.getPlayerList()[0].getHand().setCardIndex(model.getPlayerList()[0].getHand().getCardIndex() - 1);
-					}
+					
 					System.out.println("Deck Size : " + model.getDeckSize());
 				}//if requirementment
 				else
 				{
 					JOptionPane.showMessageDialog (null, "You need to meet the requirements to use this card", "Requirement not met", JOptionPane.INFORMATION_MESSAGE);
+					currentCard.fail(player);
 				}//tells user that they cant use the card yet
+				player.getHand().remove(currentCard);
+				if(player.getHand().getCardIndex() == 0)
+				{
+					player.getHand().setCardIndex(0);
+				}
+				else
+				{
+					player.getHand().setCardIndex(model.getPlayerList()[0].getHand().getCardIndex() - 1);
+				}
 			}
 			else
 			{
@@ -84,6 +94,7 @@ public class GameController {
 				button.setEnabled(false);
 				System.out.println("EMPTY");
 			}
+			
 			view.getInfoPanel().updateScoreBoard();
 			view.getControlPanel().getRightPanel().updateCards();
 			

@@ -15,7 +15,7 @@ public class Card05 extends Card {
 		//super();
 		super.setName("05");
 		super.setCName("CECS 100");
-		super.setEffect("gained 1 Craft Token");
+		super.setEffect("gain 1 Craft Token");
 	}
 	
 	
@@ -34,6 +34,13 @@ public class Card05 extends Card {
 	public void effect(Player player) {
 		// TODO Auto-generated method stub
 		player.setCraft(player.getCraft() + 1);
+		setEffect("gained 1 Craft Token");
+	}
+
+	@Override
+	public void fail(Player player) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

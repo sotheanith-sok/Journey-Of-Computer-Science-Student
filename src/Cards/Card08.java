@@ -17,7 +17,7 @@ public class Card08 extends Card {
 		//super();
 		super.setName("08");
 		super.setCName("Enjoying The Peace");
-		super.setEffect("");
+		super.setEffect("gain 1 Learning Chip or Gain 1 Integrity Chip");
 	}
 
 	@Override
@@ -52,6 +52,12 @@ public class Card08 extends Card {
 			player.setIntegrity(player.getIntegrity() + 1);
 			setEffect("gained 1 Integrity Chip");
 		}
+		
+	}
+
+	@Override
+	public void fail(Player player) {
+		// TODO Auto-generated method stub
 		
 	}
 

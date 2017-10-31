@@ -6,25 +6,25 @@ import Model.Player;
 import View.GameView;
 
 
-public class Card00 extends Card{
+public class Card12 extends Card{
 
-	public Card00(String name, String cName, String effect , GameModel model , GameView view) {
+	public Card12(String name, String cName, String effect , GameModel model , GameView view) {
 		super(name, cName ,effect, model, view);
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Card00()
+	public Card12()
 	{
 		//super();
-		super.setName("00");
-		super.setCName("CECS 100");
-		super.setEffect("gain 1 Learning Chip");
+		super.setName("12");
+		super.setCName("Late For Class");
+		super.setEffect("gain 1 Craft Chip and move to the Lactation Lounge");
 	}
 
 
 	@Override
 	public Boolean requirement(Player player ,String location, int stat) {
-		if(player.getLocation().equals("ECS 308") || player.getLocation().equals("ECS 302") )
+		if(!player.getLocation().equals("Forbidden Parking"))
 		{
 			return true;
 		}
@@ -36,9 +36,9 @@ public class Card00 extends Card{
 	@Override
 	public void effect(Player player) {
 		// TODO Auto-generated method stub
-		//player.setQualityPoints();
-		player.setLearning(player.getLearning() + 1);
-		setEffect("gained 1 Learning Chip");
+		player.setCraft(player.getCraft() + 1);
+		setEffect("gained 1 Craft Chip and moved to the Lactation Lounge");
+		player.setLocation("Lactation Lounge");
 		
 	}
 
@@ -47,8 +47,6 @@ public class Card00 extends Card{
 		// TODO Auto-generated method stub
 		
 	}
-
-
 	
 
 	

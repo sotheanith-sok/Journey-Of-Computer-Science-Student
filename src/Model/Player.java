@@ -1,8 +1,11 @@
 package Model;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 import javax.swing.JOptionPane;
+
+import View.GameView;
 
 public class Player {
 
@@ -11,9 +14,10 @@ public class Player {
 	String name = "";
 	String location = "South Hall";
 	GameModel model;
+	GameView view;
 	Hand hand;
 
-	public Player(GameModel model) {
+	public Player(GameModel model ) {
 		name = "AI ";
 		this.model = model;
 		hand = new Hand(model);
@@ -23,7 +27,7 @@ public class Player {
 		integrity = rand.nextInt(3) + 1;
 		System.out.println(name + " " + learning + " " + craft + " " + integrity);
 	}
-
+	
 	public Player(GameModel model, String n) {
 		name = n;
 		this.model = model;
@@ -34,7 +38,11 @@ public class Player {
 		integrity = rand.nextInt(3) + 1;
 		System.out.println(name + " " + learning + " " + craft + " " + integrity);
 	}
-
+	public void setView(GameView view)
+	{
+		this.view = view;
+		
+	}
 	public int getScore() {
 		return score;
 	}
@@ -126,12 +134,56 @@ public class Player {
 
 	public void setLocation(String location) {
 		this.location = location;
+		view.updateAvailableLocation();
 	}
 	
 	public Hand getHand()
 	{
 		return hand;
 	}
+	
+	public void discardACard(Card card)
+	{
+		ArrayList<String> currentHand = new ArrayList<String>();
+		ArrayList<Card>currHand = new ArrayList<Card>();
+		Object discardChip = null;
+		for(Card c : getHand())
+		{
+			if(!c.getCName().equals(card.getCName()))
+			{
+				currHand.add(c);
+				currentHand.add(c.getCName() + " : " + c.getEffect());
+			}
+			
+		}
+		String cHand[] = new String[currentHand.size()];
+		for(int i = 0 ; i < currentHand.size();i++)
+		{
+			cHand[i] = currentHand.get(i);
+		}
+		while(discardChip == null)
+		{
+		discardChip = JOptionPane.showInputDialog(null, "Select One Card To Discard",
+		        "", JOptionPane.QUESTION_MESSAGE, null,  cHand, cHand[0]);
+		}
+		
+		for(int i = 0 ; i < cHand.length ; i++)
+		{
+			if(discardChip.equals(cHand[i]))
+			{
+				getHand().remove(model.getDeck().getCardMap().get(currHand.get(i).getName()));
+				if(getHand().getCardIndex() == 0)
+				{
+					getHand().setCardIndex(0);
+				}
+				else
+				{
+					getHand().setCardIndex(getHand().getCardIndex() - 1);
+				}
+			
+			}
+		}
+	}//discard Card
 	
 	
 }

@@ -15,7 +15,7 @@ public class Card03 extends Card {
 		//super();
 		super.setName("03");
 		super.setCName("Research Compilers");
-		super.setEffect("gained 1 Learning Chip");
+		super.setEffect("gain 1 Learning Chip");
 	}
 	
 	
@@ -34,6 +34,14 @@ public class Card03 extends Card {
 	public void effect(Player player) {
 		// TODO Auto-generated method stub
 		player.setLearning(player.getLearning() + 1);
+		setEffect("gained 1 Learning Chip");
+	
+	}
+
+	@Override
+	public void fail(Player player) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

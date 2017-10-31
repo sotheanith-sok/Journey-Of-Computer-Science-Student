@@ -15,7 +15,7 @@ public class Card02 extends Card {
 		//super();
 		super.setName("02");
 		super.setCName("Lunch at Bratwurst Hall");
-		super.setEffect("gained 1 Craft Chip");
+		super.setEffect("gain 1 Craft Chip");
 	}
 	
 	
@@ -34,6 +34,13 @@ public class Card02 extends Card {
 	public void effect(Player player) {
 		// TODO Auto-generated method stub
 		player.setCraft(player.getCraft() + 1);
+		setEffect("gained 1 Craft Chip");
+	}
+
+	@Override
+	public void fail(Player player) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
