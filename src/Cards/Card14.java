@@ -8,10 +8,7 @@ import View.GameView;
 
 public class Card14 extends Card{
 
-	public Card14(String name, String cName, String effect , GameModel model , GameView view) {
-		super(name, cName ,effect, model, view);
-		// TODO Auto-generated constructor stub
-	}
+	
 	
 	public Card14()
 	{
@@ -51,11 +48,11 @@ public class Card14 extends Card{
 		if(player.getHand().size() -1 >= 0)
 		{
 			player.discardACard(this);
-			setEffect("did not meet the requirements. Lost 3 quality points and discarded a card");
+			setEffect("and lost 3 quality points and discarded a card");
 		}
 		else
 		{
-			setEffect("did not meet the requirements. Lost 3 quality points, but their hand was empty.");
+			setEffect("and lost 3 quality points, their hand was empty.");
 		}
 	}
 	

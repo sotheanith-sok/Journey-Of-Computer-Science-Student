@@ -4,18 +4,19 @@ import View.GameView;
 
 public abstract class Card {
 
-	private String name ,cName , effect;
+	private String name ,cName , cLocation , effect;
 	private GameModel model;
 	private GameView view;
 	
-	public Card(String name , String cName ,  String effect, GameModel model , GameView view)
+	/*public Card(String name , String cName , String cLocation ,  String effect, GameModel model , GameView view)
 	{
 		this.name = name;
 		this.cName = cName;
+		this.cLocation = cLocation;
 		this.effect = effect;
 		this.model = model;
 		this.view = view;
-	}
+	}*/
 	public Card(GameModel model)
 	{
 		this.model = model;
@@ -29,6 +30,10 @@ public abstract class Card {
 	{
 		return cName;
 	}
+	public String getCLocation()
+	{
+		return cLocation;
+	}
 	public String getName() {
 		return name;
 	}
@@ -39,6 +44,11 @@ public abstract class Card {
 
 	public void setCName(String cName) {
 		this.cName = cName;
+	}
+	
+	public void setCLocation(String cLocation)
+	{
+		this.cLocation = cLocation;
 	}
 	public String getEffect() {
 		return effect;
@@ -57,7 +67,11 @@ public abstract class Card {
 	}
 	
 	public abstract void effect(Player player);
-	public abstract void fail(Player player);
+	public void fail(Player player)
+	{
+		setEffect("");
+		
+	}
 	
 	public abstract Boolean requirement(Player player, String location , int stat);
 	

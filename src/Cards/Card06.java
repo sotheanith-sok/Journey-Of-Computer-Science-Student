@@ -5,16 +5,13 @@ import Model.Player;
 import View.GameView;
 public class Card06 extends Card {
 
-	public Card06(String name, String cName, String effect , GameModel model , GameView view) {
-		super(name, cName ,effect, model, view);
-		// TODO Auto-generated constructor stub
-	}
 	
 	public Card06()
 	{
 		//super();
 		super.setName("06");
 		super.setCName("Exercising Mind and Body");
+		super.setCLocation("Play in Student Recreation");
 		super.setEffect("gain 1 Integrity Chip");
 	}
 	
@@ -37,10 +34,5 @@ public class Card06 extends Card {
 		setEffect("gained 1 Integrity Chip");
 	}
 
-	@Override
-	public void fail(Player player) {
-		// TODO Auto-generated method stub
-		
-	}
 
 }

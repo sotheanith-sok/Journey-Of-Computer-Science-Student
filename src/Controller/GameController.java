@@ -59,39 +59,45 @@ public class GameController {
 	class PlayCardButtonListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			Player player = model.getPlayerList()[0];
-			if(model.getPlayerList()[0].getHand().size() > 0)
+			if(player.getHand().size() > 0)
 			{
-				Card currentCard =(Card) model.getDeck().getCardMap().get(model.getPlayerList()[0].getHand().get(model.getPlayerList()[0].getHand().getCardIndex()).getName());
+				Card currentCard =(Card) model.getDeck().getCardMap().get(player.getHand().get(player.getHand().getCardIndex()).getName());
 				
 				if(currentCard.requirement(player, player.getLocation(), 0))
 				{
 					currentCard.effect(player);
 					System.out.println(currentCard.getName());
-					System.out.println("Card is : " + currentCard.getName());
+					System.out.println("Card is : " + currentCard.getName() + " " + currentCard.getCName());
 					String effectDescription = "played " + currentCard.getCName() + " and " + currentCard.getEffect();
 					view.getInfoPanel().updateFeedback(player, effectDescription);
 					
 					System.out.println("Deck Size : " + model.getDeckSize());
 				}//if requirementment
-				else
+				else 
 				{
 					JOptionPane.showMessageDialog (null, "You need to meet the requirements to use this card", "Requirement not met", JOptionPane.INFORMATION_MESSAGE);
 					currentCard.fail(player);
+					String failMessage = "tried to play " + currentCard.getCName() + ", but failed " + currentCard.getEffect(); 
+					view.getInfoPanel().updateFeedback(player, failMessage);
 				}//tells user that they cant use the card yet
-				player.getHand().remove(currentCard);
+				
+				player.getHand().remove(currentCard);//removes the card regardless if the player meets the requirement or not
+				
 				if(player.getHand().getCardIndex() == 0)
 				{
 					player.getHand().setCardIndex(0);
 				}
 				else
 				{
-					player.getHand().setCardIndex(model.getPlayerList()[0].getHand().getCardIndex() - 1);
+					player.getHand().setCardIndex(player.getHand().getCardIndex() - 1);
 				}
 			}
 			else
 			{
 				JButton button = (JButton)e.getSource();
 				button.setEnabled(false);
+				String emptyHandMessage = "'s Hand is empty"; 
+				view.getInfoPanel().updateFeedback(player, emptyHandMessage);
 				System.out.println("EMPTY");
 			}
 			
@@ -101,5 +107,50 @@ public class GameController {
 			
 		}
 	}
-
+	
+	public void playCardAI(Player player)
+	{
+		
+		if(player.getHand().size() > 0)
+		{
+			//Card currentCard =(Card) model.getDeck().getCardMap().get(model.getPlayerList()[0].getHand().get(model.getPlayerList()[0].getHand().getCardIndex()).getName());
+			Card currentCard = player.getHand().get(0);
+			//player.getHand().remove(0);
+			
+			
+			if(currentCard.requirement(player, player.getLocation(), 0))
+			{
+				currentCard.effect(player);
+				//System.out.println(currentCard.getName());
+				System.out.println("Card is : " + currentCard.getName() + " " + currentCard.getCName());
+				String effectDescription = "played " + currentCard.getCName() + " and " + currentCard.getEffect();
+				view.getInfoPanel().updateFeedback(player, effectDescription);
+				
+				System.out.println("Deck Size : " + model.getDeckSize());
+			}//if requirementment
+			else //wont prompt the ai with a dialog
+			{
+				currentCard.fail(player);
+				String failMessage = "tried to play " + currentCard.getCName() + ", but did not meet the requirements and failed."; 
+				view.getInfoPanel().updateFeedback(player, failMessage);
+			}
+			player.getHand().remove(currentCard);//removes the card regardless if the player meets the requirement or not 
+			
+			
+		}
+		else
+		{
+			//JButton button = (JButton)e.getSource();
+			//button.setEnabled(false);
+			String emptyHandMessage = player.getName() + "'s Hand is empty"; 
+			view.getInfoPanel().updateFeedback(player, emptyHandMessage);
+			System.out.println("EMPTY");
+		}
+		
+		view.getInfoPanel().updateScoreBoard();
+		view.getControlPanel().getRightPanel().updateCards();
+		
+	}
+	
+	
 }

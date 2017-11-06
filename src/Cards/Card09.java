@@ -9,10 +9,7 @@ import Model.Player;
 import View.GameView;
 public class Card09 extends Card {
 
-	public Card09(String name, String cName, String effect , GameModel model , GameView view) {
-		super(name, cName ,effect, model, view);
-		// TODO Auto-generated constructor stub
-	}
+	
 	
 
 	public Card09(GameModel model)
@@ -20,6 +17,7 @@ public class Card09 extends Card {
 		super(model);
 		super.setName("09");
 		super.setCName("Parking Violation");
+		super.setCLocation("Play in Forbidden Parking");
 		super.setEffect("gain 1 Learning chip or Discard 1 game card from your hand to get another learning chip");
 	}
 	@Override
@@ -120,10 +118,6 @@ public class Card09 extends Card {
 	}//effect()
 
 
-	@Override
-	public void fail(Player player) {
-		// TODO Auto-generated method stub
-		
-	}
+
 
 }

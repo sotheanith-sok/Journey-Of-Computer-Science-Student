@@ -5,10 +5,7 @@ import Model.Player;
 import View.GameView;
 public class Card20 extends Card {
 
-	public Card20(String name, String cName, String effect , GameModel model , GameView view) {
-		super(name, cName ,effect, model, view);
-		// TODO Auto-generated constructor stub
-	}
+	
 	
 	public Card20()
 	{
@@ -40,7 +37,7 @@ public class Card20 extends Card {
 	@Override
 	public void fail(Player player) {
 		// TODO Auto-generated method stub
-		setEffect("did not meet the requirements. Moved to the Student Parking");
+		setEffect("and was moved to the Student Parking");
 		player.setLocation("Student Parking");
 		
 		

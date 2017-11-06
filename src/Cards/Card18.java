@@ -5,10 +5,6 @@ import Model.Player;
 import View.GameView;
 public class Card18 extends Card {
 
-	public Card18(String name, String cName, String effect , GameModel model , GameView view) {
-		super(name, cName ,effect, model, view);
-		// TODO Auto-generated constructor stub
-	}
 	
 	public Card18()
 	{
@@ -40,7 +36,7 @@ public class Card18 extends Card {
 	@Override
 	public void fail(Player player) {
 		// TODO Auto-generated method stub
-		setEffect("did not meet the requirements. Lost 3 quality points.");
+		setEffect("and lost 3 quality points.");
 		player.setQualityPoints(player.getQualityPoints()-3);
 		
 		

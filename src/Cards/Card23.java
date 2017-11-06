@@ -10,10 +10,7 @@ import View.GameView;
 
 public class Card23 extends Card{
 
-	public Card23(String name, String cName, String effect , GameModel model , GameView view) {
-		super(name, cName ,effect, model, view);
-		// TODO Auto-generated constructor stub
-	}
+	
 	
 	public Card23()
 	{
@@ -80,11 +77,11 @@ public class Card23 extends Card{
 		if(player.getHand().size() -1 >= 0)
 		{
 			player.discardACard(this);
-			setEffect("did not meet the requirements and discarded a card");
+			setEffect("and discarded a card");
 		}
 		else
 		{
-			setEffect("did not meet the requirements and but their hand was empty.");
+			setEffect("but their hand was empty.");
 		}
 	}
 	

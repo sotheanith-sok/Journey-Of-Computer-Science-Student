@@ -8,16 +8,14 @@ import View.GameView;
 
 public class Card13 extends Card{
 
-	public Card13(String name, String cName, String effect , GameModel model , GameView view) {
-		super(name, cName ,effect, model, view);
-		// TODO Auto-generated constructor stub
-	}
+	
 	
 	public Card13()
 	{
 		//super();
 		super.setName("13");
 		super.setCName("The Big Game");
+		super.setCLocation("Play in the Pyrimad");
 		super.setEffect("gain 1 Craft Chip and move to the Lactation Lounge");
 	}
 
@@ -42,11 +40,7 @@ public class Card13 extends Card{
 		
 	}
 
-	@Override
-	public void fail(Player player) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 	
 
 	
