@@ -11,7 +11,8 @@ public class Card19 extends Card {
 	{
 		//super();
 		super.setName("19");
-		super.setCName("Score a Goal! , Play in George Allen Field");
+		super.setCName("Score a Goal!");
+		super.setCLocation("Play in George Allen Field");
 		super.setEffect("Prerequiste: 3 Craft Chips , gain 5 Quality Points and 1 Integrity Chip; Fail : Go to Student Parking");
 	}
 	

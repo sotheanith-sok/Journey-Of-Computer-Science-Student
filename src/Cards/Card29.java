@@ -3,23 +3,23 @@ import Model.Card;
 import Model.GameModel;
 import Model.Player;
 import View.GameView;
-public class Card20 extends Card {
+public class Card29 extends Card {
 
 	
 	
-	public Card20()
+	public Card29()
 	{
 		//super();
-		super.setName("20");
-		super.setCName("Make the Dean's List");
-		super.setCLocation("Play in North Hall or South Hall");
-		super.setEffect("Prerequiste: 6 Learning Chips , gain 5 Quality Points; Fail : Go to Student Parking");
+		super.setName("29");
+		super.setCName("Soccer Goalie");
+		super.setCLocation("Play in the George Allen Field");
+		super.setEffect("Prerequiste: 3 Learning Chips and 3 Craft Chips , Gain 5 Quality Points and 1 Game Card; Fail : Go to Student Parking");
 	}
 	
 	
 	@Override
 	public Boolean requirement(Player player ,String location, int stat) {
-		if( ( (player.getLocation().equals("North Hall")) || (player.getLocation().equals("South Hall"))   ) && player.getLearning() >= 6 )
+		if( player.getLocation().equals("George Allen Field")   && player.getLearning() >= 3 && player.getCraft() >= 3 )
 		{
 			return true;
 		}
@@ -31,7 +31,8 @@ public class Card20 extends Card {
 	@Override
 	public void effect(Player player) {
 		// TODO Auto-generated method stub
-		player.setQualityPoints(player.getQualityPoints()+ 5);
+		player.setQualityPoints(player.getQualityPoints() + 5);
+		player.drawCard();
 		setEffect("gained 5 Quality Points");
 	}
 

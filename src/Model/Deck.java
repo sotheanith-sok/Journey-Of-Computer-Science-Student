@@ -57,8 +57,13 @@ public class Deck extends ArrayList<Card>{
 			card20 = new Card20(),
 			card21 = new Card21(),
 			card22 = new Card22(),
-			card23 = new Card23();
-		
+			card23 = new Card23(),
+			card24 = new Card24(),
+			card25 = new Card25(),
+			card26 = new Card26(),
+			card27 = new Card27(),
+			card28 = new Card28(),
+			card29 = new Card29();
 		add(card00);
 		add(card01);
 		add(card02);
@@ -83,6 +88,12 @@ public class Deck extends ArrayList<Card>{
 		add(card21);
 		add(card22);
 		add(card23);
+		add(card24);
+		add(card25);
+		add(card26);
+		add(card27);
+		add(card28);
+		add(card29);
 		for(Card c : this)
 		{
 			cardMap.put(c.getName(), c);

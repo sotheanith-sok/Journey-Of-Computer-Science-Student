@@ -10,8 +10,10 @@ public class Hand extends ArrayList<Card> {
 	private int cardIndex = 0;
 	private int maxSize = 5;
 	Deck deck;
+	GameModel model;
 	public Hand(GameModel model)
 	{
+		this.model = model;
 		deck = model.getDeck();
 		instantiateHand(maxSize);
 		//hand = new ArrayList<Card>();
@@ -19,12 +21,15 @@ public class Hand extends ArrayList<Card> {
 	}
 	private void instantiateHand(int maxSize)
 	{
+		
+		
 		for(int i = size() ; i < maxSize ; i++ )
 		{
 			if(deck.size() > 0)
 			{
+				
 				add(deck.removeCard());
-				//deck.remove(0);
+				
 			}
 			else
 			{
@@ -44,6 +49,14 @@ public class Hand extends ArrayList<Card> {
 		
 		this.cardIndex = cardIndex ;
 	}
+	
+	public int getMaxSize()
+	{
+		return maxSize;
+		
+	}
+	
+	
 	
 	
 	

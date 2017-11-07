@@ -11,7 +11,8 @@ public class Card21 extends Card {
 	{
 		//super();
 		super.setName("21");
-		super.setCName("Pass Soccer Class , Play in George Allen Field");
+		super.setCName("Pass Soccer Class");
+		super.setCLocation("Play in George Allen Field");
 		super.setEffect("Prerequiste: 5 Craft Chips , gain 5 Quality Points; Fail : Lose 3 Quality Points");
 	}
 	

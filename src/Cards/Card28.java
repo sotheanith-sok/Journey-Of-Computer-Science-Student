@@ -8,37 +8,35 @@ import Model.Player;
 import View.GameView;
 
 
-public class Card23 extends Card{
+public class Card28 extends Card{
 
 	
 	
-	public Card23()
+	public Card28()
 	{
 		//super();
-		super.setName("23");
-		super.setCName("A New Laptop");
-		super.setCLocation("Play in the Computer Lab");
-		super.setEffect("Prerequiste: 4 Integrity , Get 3 Quality Points and 1 Chip of Your Choice; Fail : Discard 1 Game Card ");
+		super.setName("28");
+		super.setCName("Professor Englert");
+		super.setCLocation("Play in CECS Conference");
+		super.setEffect("Prerequiste: 3 Integrity , Get 1 Chip of Your Choice; Fail : Discard 1 Game Card ");
 	}
 
 
 	@Override
 	public Boolean requirement(Player player ,String location, int stat) {
-		if((player.getLocation().equals("Computer Lab") && player.getIntegrity() >= 4 ))
+		if(  player.getLocation().equals("CECS Conference Room") && player.getIntegrity() >= 3 )
 		{
 			return true;
 		}
-		
 		return false;
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void effect(Player player) {
 		// TODO Auto-generated method stub
-		player.setQualityPoints(player.getQualityPoints()+ 3);
-		String tempEffect = "gained 3 Quality Points and ";
+		
+		String tempEffect = "";
 		String[] options = {"Get 1 Learning Chip" , "Get 1 Craft Chip" , "Get 1 Integrity Chip" , "Get 1 Quality Point"};
 		Object chip = null;
 		while(chip == null)

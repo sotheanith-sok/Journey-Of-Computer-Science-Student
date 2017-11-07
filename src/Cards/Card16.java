@@ -11,7 +11,8 @@ public class Card16 extends Card {
 	{
 		//super();
 		super.setName("16");
-		super.setCName("KIN 253 Learning the Rules of Soccer , Play in George Allen Field");
+		super.setCName("KIN 253, Learning the Rules of Soccer");
+		super.setCLocation("Play in George Allen Field");
 		super.setEffect("Prerequiste: 4 Integrity Chips , gain 2 Craft Chips; Fail : Go to Room of Retirement");
 	}
 	

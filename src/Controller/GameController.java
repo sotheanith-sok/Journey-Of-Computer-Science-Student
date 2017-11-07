@@ -18,6 +18,7 @@ public class GameController {
 	public GameController(GameModel model, GameView view) {
 		this.model = model;
 		this.view = view;
+		view.addDrawCardButtListener(new DrawCardButtonListener());
 		view.addMoveButtonListener(new MoveButtonListener());
 		view.addPlayCardButtonListener(new PlayCardButtonListener());
 		model.getPlayerList()[0].setView(view);
@@ -25,14 +26,7 @@ public class GameController {
 
 	class DrawCardButtonListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			if(model.getDeckSize() > 0)
-			{
-				
-			}//if
-			else
-			{
-				//(JButton)e.getSource().setEnabled(false);
-			}
+			model.getPlayerList()[0].drawCard();
 		}
 	}
 

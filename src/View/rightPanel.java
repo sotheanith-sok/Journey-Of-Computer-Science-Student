@@ -88,26 +88,7 @@ public class rightPanel extends JPanel{ //extends JPanel
 				
 			}
 		});
-		/*
-		for(int i = 0 ; i < deck.size(); i++)
-		{
-			JLabel card = new JLabel();
-			String cardImgNumber =deck.getDeck().get(i).getName(); 
-			
-			card.setName(cardImgNumber);
-			String imgUrl = "src/Images/cardm" + cardImgNumber + ".png";
-			try {
-				BufferedImage img = ImageIO.read(new File(imgUrl));
-				card.setPreferredSize(new Dimension(img.getWidth(), img.getHeight()));
-				cardDeck.setPreferredSize(new Dimension(img.getWidth(), img.getHeight()));
-				card.setIcon(new ImageIcon(img));
-			} catch (Exception ex) {
-				System.out.println(ex);
 		
-			}
-			cardList.add(card);
-			
-		}*/
 		updateCards();
 		cardDeck.setIcon(cardList.get(userHand.getCardIndex()).getIcon());
 	//	deck.setCardIndex(deck.getCardIndex() + 1);

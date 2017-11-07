@@ -11,7 +11,8 @@ public class Card17 extends Card {
 	{
 		//super();
 		super.setName("17");
-		super.setCName("Learning Netbeans , Play in Lactation Lounge");
+		super.setCName("Learning Netbeans");
+		super.setCLocation("Play in Lactation Lounge");
 		super.setEffect("Prerequiste: 3 Learning , gain 5 Quality Points;, Fail : Lose 3 Quality Points");
 	}
 	

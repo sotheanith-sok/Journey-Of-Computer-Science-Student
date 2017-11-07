@@ -57,7 +57,7 @@ public class Card09 extends Card {
 							if(!c.getCName().equals(getCName()))
 							{
 								currHand.add(c);
-								currentHand.add(c.getCName() + " : " + c.getEffect());
+								currentHand.add(c.getCName() + ", " + c.getCLocation() + " : " + c.getEffect());
 							}
 							
 						}

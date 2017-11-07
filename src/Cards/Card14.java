@@ -14,7 +14,8 @@ public class Card14 extends Card{
 	{
 		//super();
 		super.setName("14");
-		super.setCName("Math 123, Play in ECS 302 or ECS 308");
+		super.setCName("Math 123");
+		super.setCLocation("Play in ECS 302 or ECS 308");
 		super.setEffect("Prerequiste: 5 Learning , Get 5 Quality Points; Fail : Lose 3 Quality Points and Lose 1 Game Card ");
 	}
 

@@ -11,7 +11,8 @@ public class Card15 extends Card {
 	{
 		//super();
 		super.setName("15");
-		super.setCName("Physics 151 , Play in ECS 308");
+		super.setCName("Physics 151");
+		super.setCLocation("Play in ECS 308");
 		super.setEffect("Prerequiste: 3 Craft , gain 5 Quality Points;, Fail : Lose 3 Quality Points");
 	}
 	

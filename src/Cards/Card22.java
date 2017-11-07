@@ -11,7 +11,8 @@ public class Card22 extends Card {
 	{
 		//super();
 		super.setName("22");
-		super.setCName("Fall in the Pond, Play in the Japanese Garden");
+		super.setCName("Fall in the Pond");
+		super.setCLocation("Play in the Japanese Garden");
 		super.setEffect("Prerequiste: 3 Learning Chips , gain 1 Integrity and 1 Craft Chip; Fail : Go to the Lactation Lounge");
 	}
 	

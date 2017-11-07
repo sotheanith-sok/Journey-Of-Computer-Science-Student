@@ -10,7 +10,8 @@ public class Card18 extends Card {
 	{
 		//super();
 		super.setName("18");
-		super.setCName("Choosing a Major, Play in CECS Conference Room");
+		super.setCName("Choosing a Major");
+		super.setCLocation("Play in CECS Conference Room");
 		super.setEffect("Prerequiste: 3 Integrity , gain 5 Quality Points;, Fail : Lose 3 Quality Points");
 	}
 	
