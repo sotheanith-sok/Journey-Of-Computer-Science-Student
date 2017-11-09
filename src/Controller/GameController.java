@@ -70,7 +70,10 @@ public class GameController {
 				else 
 				{
 					JOptionPane.showMessageDialog (null, "You need to meet the requirements to use this card", "Requirement not met", JOptionPane.INFORMATION_MESSAGE);
+					
 					currentCard.fail(player);
+					player.setQualityPoints(player.getQualityPoints() - 2);
+					
 					String failMessage = "tried to play " + currentCard.getCName() + ", but failed " + currentCard.getEffect(); 
 					view.getInfoPanel().updateFeedback(player, failMessage);
 				}//tells user that they cant use the card yet

@@ -35,6 +35,8 @@ public class Card11 extends Card{
 	@Override
 	public void effect(Player player) {
 		// TODO Auto-generated method stub
+		
+		
 		String[] options = {"Get 1 Learning Chip" , "Get 1 Craft Chip"};
 		Object chip = null;
 		while(chip == null)

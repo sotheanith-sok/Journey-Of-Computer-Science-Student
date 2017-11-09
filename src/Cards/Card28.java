@@ -35,37 +35,7 @@ public class Card28 extends Card{
 	@Override
 	public void effect(Player player) {
 		// TODO Auto-generated method stub
-		
-		String tempEffect = "";
-		String[] options = {"Get 1 Learning Chip" , "Get 1 Craft Chip" , "Get 1 Integrity Chip" , "Get 1 Quality Point"};
-		Object chip = null;
-		while(chip == null)
-		{
-			chip = JOptionPane.showInputDialog(null, "Select One",
-		        "", JOptionPane.QUESTION_MESSAGE, null, options , options[0]);
-		}
-		if(chip.equals(options[0]))
-		{
-			player.setLearning(player.getLearning() + 1);
-			tempEffect += "1 Learning Chip";
-		}
-		else if(chip.equals(options[1]))
-		{
-			player.setCraft(player.getCraft() + 1);
-			tempEffect += "1 Craft Chip";
-		}
-		else if(chip.equals(options[2]))
-		{
-			player.setIntegrity(player.getIntegrity() + 1);
-			tempEffect += "1 Integrity Chip";
-		}
-		else if(chip.equals(options[3]))
-		{
-			player.setQualityPoints(player.getQualityPoints() + 1);
-			tempEffect += "1 additional Quality Point";
-		}
-		setEffect(tempEffect);
-		
+		chooseOne(player , "");
 		
 	}
 
