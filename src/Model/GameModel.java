@@ -83,6 +83,7 @@ public class GameModel {
 		return userName;
 	}
 	public String play(Player p) {
+		System.out.println(p.getName()+" has "+p.getPlayerHand().size());
 		Card c=p.remove();
 		String output=c.effect(p);
 		deck.discardCard(c);

@@ -33,7 +33,8 @@ public class Card28 extends Card {
 	@Override
 	public void fail(Player p) {
 		p.setQualityPoints(p.getQualityPoints() - 2);
-		p.remove(p.getAllCardName().get((int)(Math.random()*p.getAllCardName().size())));
+		if (p.getPlayerHand().size() > 0)
+			p.remove(p.getAllCardName().get((int) (Math.random() * p.getAllCardName().size())));
 	}
 
 	@Override

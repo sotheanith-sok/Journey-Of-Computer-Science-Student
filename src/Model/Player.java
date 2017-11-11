@@ -3,6 +3,8 @@ package Model;
 import java.util.ArrayList;
 import java.util.Random;
 
+import Cards.CardNULL;
+
 public class Player {
 
 	int skillChips, qualityPoints, learning, craft, integrity;
@@ -108,12 +110,15 @@ public class Player {
 			deck.discardCard(c);
 		} else {
 			playerHand.add(c);
-		}		
+		}
 	}
 
 	public void getNextCard() {
-		Card c = playerHand.remove(0);
-		playerHand.add(c);
+		if (getPlayerHand().size() > 0) {
+			Card c = playerHand.remove(0);
+			playerHand.add(c);
+		}
+
 	}
 
 	public ArrayList<Card> getPlayerHand() {
@@ -121,6 +126,9 @@ public class Player {
 	}
 
 	public Card getSelectedCard() {
+		if (playerHand.size() == 0) {
+			return new CardNULL();
+		}
 		return playerHand.get(0);
 	}
 
@@ -138,7 +146,8 @@ public class Player {
 			if (getPlayerHand().get(i).getName() == s)
 				break;
 		}
-		deck.discardCard(getPlayerHand().get(i));
+		if (getPlayerHand().size() > 0)
+			deck.discardCard(getPlayerHand().remove(i));
 	}
 
 	public void addOneMoreCard() {
@@ -146,6 +155,9 @@ public class Player {
 	}
 
 	public Card remove() {
-		return this.getPlayerHand().remove(0);
+		if (getPlayerHand().size() == 0) {
+			return new CardNULL();
+		}
+		return getPlayerHand().remove(0);
 	}
 }

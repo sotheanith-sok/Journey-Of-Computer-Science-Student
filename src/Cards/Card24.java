@@ -3,13 +3,10 @@ package Cards;
 import Model.Card;
 import Model.Player;
 
+public class Card24 extends Card {
 
-public class Card24 extends Card{
-
-	
-	
 	public Card24() {
-		super("Meet the Dean", "src/Images/cardm24.png", new String[] {"North Hall", "South Hall"});
+		super("Meet the Dean", "src/Images/cardm24.png", new String[] { "North Hall", "South Hall" });
 	}
 
 	@Override
@@ -23,15 +20,14 @@ public class Card24 extends Card{
 	@Override
 	public void fail(Player p) {
 		p.setQualityPoints(p.getQualityPoints() - 2);
-		p.remove(p.getAllCardName().get((int)(Math.random()*p.getAllCardName().size())));
+		if (p.getPlayerHand().size() > 0)
+			p.remove(p.getAllCardName().get((int) (Math.random() * p.getAllCardName().size())));
 	}
 
 	@Override
 	public boolean requirement(Player p) {
-		return (p.getLearning() >= 3) &&(p.getIntegrity() >= 3) &&(p.getCraft() >= 3) && location.contains(p.getLocation());
+		return (p.getLearning() >= 3) && (p.getIntegrity() >= 3) && (p.getCraft() >= 3)
+				&& location.contains(p.getLocation());
 	}
-
-	
-	
 
 }

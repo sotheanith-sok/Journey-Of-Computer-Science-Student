@@ -28,6 +28,7 @@ public class GameController {
 	class DrawCardButtonListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			model.drawCard(model.getPlayerList().get(0));
+			view.updatePlayerSelectedCard();
 			view.updateScoreBoard();
 			view.switchOffDrawButton();
 			view.switchOnMoveButton();

@@ -1,11 +1,12 @@
 package Cards;
+
 import Model.Card;
 import Model.Player;
+
 public class Card39 extends Card {
-	
+
 	public Card39() {
-		super("Goodbye, Professor", "src/Images/cardm39.png",
-				new String[] { "Room of Retirement" });
+		super("Goodbye, Professor", "src/Images/cardm39.png", new String[] { "Room of Retirement" });
 	}
 
 	@Override
@@ -18,12 +19,14 @@ public class Card39 extends Card {
 	@Override
 	public void fail(Player p) {
 		p.setQualityPoints(p.getQualityPoints() - 2);
-		p.remove(p.getAllCardName().get((int)(Math.random()*p.getAllCardName().size())));
+		if (p.getPlayerHand().size() > 0)
+			p.remove(p.getAllCardName().get((int) (Math.random() * p.getAllCardName().size())));
 	}
 
 	@Override
 	public boolean requirement(Player p) {
-		return (p.getIntegrity() >= 6)&&(p.getLearning() >= 6)&&(p.getCraft() >= 6)&& location.contains(p.getLocation());
+		return (p.getIntegrity() >= 6) && (p.getLearning() >= 6) && (p.getCraft() >= 6)
+				&& location.contains(p.getLocation());
 	}
-	
+
 }
