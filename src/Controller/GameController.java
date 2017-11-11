@@ -2,152 +2,121 @@ package Controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
-import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
-import Model.Card;
 import Model.GameModel;
-import Model.Player;
 import View.GameView;
 
 public class GameController {
 	private GameModel model;
 	private GameView view;
-
+	private int clicked = 0;
 	public GameController(GameModel model, GameView view) {
 		this.model = model;
 		this.view = view;
-		view.addDrawCardButtListener(new DrawCardButtonListener());
 		view.addMoveButtonListener(new MoveButtonListener());
 		view.addPlayCardButtonListener(new PlayCardButtonListener());
-		model.getPlayerList()[0].setView(view);
+		view.addDrawCardButtListener(new DrawCardButtonListener());
+		view.addCardButtonListener(new CardLabelListener());
+		view.switchOffMoveButton();
+		view.switchOffPlayButton();
 	}
 
 	class DrawCardButtonListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			model.getPlayerList()[0].drawCard();
+			model.drawCard(model.getPlayerList().get(0));
+			view.updateScoreBoard();
+			view.switchOffDrawButton();
+			view.switchOnMoveButton();
+			view.switchOnPlayButton();
 		}
 	}
 
 	class MoveButtonListener implements ActionListener {
+
 		public void actionPerformed(ActionEvent e) {
 			if (view.getSelectedValue() == null) {
-
+				JOptionPane.showMessageDialog(null, "Please select a location.");
 			} else {
-				model.getPlayerList()[0].setLocation(view.getSelectedValue());
+				model.move(model.getPlayerList().get(0), view.getSelectedValue());
 				view.updateAvailableLocation();
-				view.updateFeedback(model.getPlayerList()[0]);
 				view.getMapPanel().repaint();
-				model.AISequencing(model.getPlayerList()[1]);
-				view.updateFeedback(model.getPlayerList()[1]);
-				view.getMapPanel().repaint();
-				model.AISequencing(model.getPlayerList()[2]);
-				view.updateFeedback(model.getPlayerList()[2]);
-				view.getMapPanel().repaint();
-
+				view.updateScoreBoard();
+				clicked++;
+				if (clicked == 3) {
+					view.switchOffMoveButton();
+				}
 			}
 		}
 	}
 
 	class PlayCardButtonListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			Player player = model.getPlayerList()[0];
-			if(player.getHand().size() > 0)
-			{
-				Card currentCard =(Card) model.getDeck().getCardMap().get(player.getHand().get(player.getHand().getCardIndex()).getName());
-				
-				if(currentCard.requirement(player, player.getLocation(), 0))
-				{
-					currentCard.effect(player);
-					System.out.println(currentCard.getName());
-					System.out.println("Card is : " + currentCard.getName() + " " + currentCard.getCName());
-					String effectDescription = "played " + currentCard.getCName() + " and " + currentCard.getEffect();
-					view.getInfoPanel().updateFeedback(player, effectDescription);
-					
-					System.out.println("Deck Size : " + model.getDeckSize());
-				}//if requirementment
-				else 
-				{
-					JOptionPane.showMessageDialog (null, "You need to meet the requirements to use this card", "Requirement not met", JOptionPane.INFORMATION_MESSAGE);
-					
-					currentCard.fail(player);
-					player.setQualityPoints(player.getQualityPoints() - 2);
-					
-					String failMessage = "tried to play " + currentCard.getCName() + ", but failed " + currentCard.getEffect(); 
-					view.getInfoPanel().updateFeedback(player, failMessage);
-				}//tells user that they cant use the card yet
-				
-				player.getHand().remove(currentCard);//removes the card regardless if the player meets the requirement or not
-				
-				if(player.getHand().getCardIndex() == 0)
-				{
-					player.getHand().setCardIndex(0);
-				}
-				else
-				{
-					player.getHand().setCardIndex(player.getHand().getCardIndex() - 1);
-				}
+			// Human
+			view.updateFeedback(model.play(model.getPlayerList().get(0)));
+			view.getMapPanel().repaint();
+			// AI 1
+			model.drawCard(model.getPlayerList().get(1));
+			for (int i = 0; i < ((int) (Math.random() * 3) + 1); i++) {
+				model.getPlayerList().get(1).setLocation(model.getAvailableLocation(model.getPlayerList().get(1))
+						.get((int) Math.random() * model.getAvailableLocation(model.getPlayerList().get(1)).size()));
+				model.getPlayerList().get(1).getNextCard();
+				view.getMapPanel().repaint();
 			}
-			else
-			{
-				JButton button = (JButton)e.getSource();
-				button.setEnabled(false);
-				String emptyHandMessage = "'s Hand is empty"; 
-				view.getInfoPanel().updateFeedback(player, emptyHandMessage);
-				System.out.println("EMPTY");
+			view.updateFeedback(model.play(model.getPlayerList().get(1)));
+			// AI 2
+			model.drawCard(model.getPlayerList().get(2));
+			for (int i = 0; i < ((int) (Math.random() * 3) + 1); i++) {
+				model.getPlayerList().get(2).setLocation(model.getAvailableLocation(model.getPlayerList().get(2))
+						.get((int) Math.random() * model.getAvailableLocation(model.getPlayerList().get(2)).size()));
+				model.getPlayerList().get(2).getNextCard();
+				view.getMapPanel().repaint();
 			}
-			
-			view.getInfoPanel().updateScoreBoard();
-			view.getControlPanel().getRightPanel().updateCards();
-			
-			
+			view.updateFeedback(model.play(model.getPlayerList().get(2)));
+			view.updatePlayerSelectedCard();
+			view.updateScoreBoard();
+			view.switchOffMoveButton();
+			view.switchOffPlayButton();
+			view.switchOnDrawButton();
+			clicked=0;
 		}
 	}
-	
-	public void playCardAI(Player player)
-	{
-		
-		if(player.getHand().size() > 0)
-		{
-			//Card currentCard =(Card) model.getDeck().getCardMap().get(model.getPlayerList()[0].getHand().get(model.getPlayerList()[0].getHand().getCardIndex()).getName());
-			Card currentCard = player.getHand().get(0);
-			//player.getHand().remove(0);
-			
-			
-			if(currentCard.requirement(player, player.getLocation(), 0))
-			{
-				currentCard.effect(player);
-				//System.out.println(currentCard.getName());
-				System.out.println("Card is : " + currentCard.getName() + " " + currentCard.getCName());
-				String effectDescription = "played " + currentCard.getCName() + " and " + currentCard.getEffect();
-				view.getInfoPanel().updateFeedback(player, effectDescription);
-				
-				System.out.println("Deck Size : " + model.getDeckSize());
-			}//if requirementment
-			else //wont prompt the ai with a dialog
-			{
-				currentCard.fail(player);
-				String failMessage = "tried to play " + currentCard.getCName() + ", but did not meet the requirements and failed."; 
-				view.getInfoPanel().updateFeedback(player, failMessage);
-			}
-			player.getHand().remove(currentCard);//removes the card regardless if the player meets the requirement or not 
-			
-			
+
+	class CardLabelListener implements MouseListener {
+
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			model.getPlayerList().get(0).getNextCard();
+			view.updatePlayerSelectedCard();
 		}
-		else
-		{
-			//JButton button = (JButton)e.getSource();
-			//button.setEnabled(false);
-			String emptyHandMessage = player.getName() + "'s Hand is empty"; 
-			view.getInfoPanel().updateFeedback(player, emptyHandMessage);
-			System.out.println("EMPTY");
+
+		@Override
+		public void mousePressed(MouseEvent e) {
+			// TODO Auto-generated method stub
+
 		}
-		
-		view.getInfoPanel().updateScoreBoard();
-		view.getControlPanel().getRightPanel().updateCards();
-		
+
+		@Override
+		public void mouseReleased(MouseEvent e) {
+			// TODO Auto-generated method stub
+
+		}
+
+		@Override
+		public void mouseEntered(MouseEvent e) {
+			// TODO Auto-generated method stub
+
+		}
+
+		@Override
+		public void mouseExited(MouseEvent e) {
+			// TODO Auto-generated method stub
+
+		}
+
 	}
-	
-	
+
 }

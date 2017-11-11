@@ -5,57 +5,72 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
-import View.GameView;
 
 public class GameModel {
-	private Deck deck;
-	Player[] listOfPlayer;
-
-	private int discardCard = 0;
-	private int playableCard = 0;
 	Location location;
-	
+	Deck deck;
+	ArrayList<Player> playerList;
+	private String[] possiblePlayerNameList = new String[] { "Merritt", "Darrel", "Dominic", "Daria", "Fawn", "Shelly",
+			"Rona", "Merlyn", "Verna", "Hannah" };
+
 	public GameModel(String n) {
-		deck = new Deck(this);
-		listOfPlayer = new Player[3];
-		listOfPlayer[0] = new Player(this, promptName());
-		listOfPlayer[1] = new Player(this, "Abe");
-		listOfPlayer[2] = new Player(this, "Cal");
+		// Create Variable
 		location = new Location();
-	}
-	
-	public void play() {
+		deck = new Deck();
+		playerList = new ArrayList<Player>();
 
-	}
-
-	public Player[] getPlayerList() {
-		return listOfPlayer;
-	}
-
-	public Deck getDeck()
-	{
-		return deck;
-	}
-	public int getDeckSize() {
-		return deck.size();
-	}
-
-	public int getDiscardCardSize() {
-		return discardCard;
+		// Create Player
+		playerList.add(new Player(promptName(), true,deck));
+		playerList
+				.add(new Player(possiblePlayerNameList[(int) (Math.random() * possiblePlayerNameList.length)], false, deck));
+		playerList
+				.add(new Player(possiblePlayerNameList[(int) (Math.random() * possiblePlayerNameList.length)], false, deck));
+		for (int i = 0; i < playerList.size(); i++) {
+			for (int y = 0; y < 5; y++) {
+				playerList.get(i).addCard(deck.removeCard());
+			}
+		}
+		playerList.get(0).setIntegrity(1000);
+		playerList.get(0).setCraft(1000);
+		playerList.get(0).setLearning(1000);
 	}
 
-	public ArrayList<String> getAvaialableLocation(Player p) {
+	public void move(Player p, String location) {
+		p.setLocation(location);
+	}
+
+	public String playCard(Player p) {
+		Card c = p.getPlayerHand().remove(0);
+		String output = c.effect(p);
+		deck.discardCard(c);
+		p.addCard(deck.removeCard());
+		return output;
+	}
+
+	public void drawCard(Player p) {
+		p.addCard(deck.removeCard());
+	}
+
+	public ArrayList<String> getAvailableLocation(Player p) {
 		return location.getAvailableLocation(p);
 	}
-	public void humanSequencing(Player p) {
-		
+
+	public ArrayList<Player> getPlayerList() {
+		return playerList;
 	}
-	public void AISequencing(Player p) {
-		p.setLocation(location.getAvailableLocation(p).get((int) (Math.random()*location.getAvailableLocation(p).size())));
-	}
-	public Point getPlayerCurrentLocationCoordinate(Player p) {
+
+	public Point getPlayerCoordinate(Player p) {
 		return location.getPlayerCurrentLocationCoordinate(p);
 	}
+
+	public int getInPlayCardDeckSize() {
+		return deck.getInPlayCardDeckSize();
+	}
+
+	public int getDiscardCardDeckSize() {
+		return deck.getDiscardCardDeckSize();
+	}
+
 	public String promptName() {
 		boolean valid = false;
 		String userName = null;
@@ -70,5 +85,11 @@ public class GameModel {
 		}
 		return userName;
 	}
-	
+	public String play(Player p) {
+		Card c=p.remove();
+		String output=c.effect(p);
+		deck.discardCard(c);
+		return output;	
+		
+	}
 }

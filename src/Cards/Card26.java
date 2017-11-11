@@ -1,48 +1,27 @@
 package Cards;
 import Model.Card;
-import Model.GameModel;
 import Model.Player;
-import View.GameView;
 public class Card26 extends Card {
 
-	
-	
-	public Card26()
-	{
-		//super();
-		super.setName("26");
-		super.setCName("Press the Right Floor");
-		super.setCLocation("Play at Elevators");
-		super.setEffect("Prerequiste: 4 Learning Chips; Fail : Lose 2 Quality Points");
-	}
-	
-	
-	@Override
-	public Boolean requirement(Player player ,String location, int stat) {
-		if( player.getLocation().equals("Elevators")   && player.getLearning() >= 4 )
-		{
-			return true;
-		}
-		return false;
-		
+	public Card26() {
+		super("Press the Right Floor", "src/Images/cardm26.png", new String[] {"Elevators"});
 	}
 
-
 	@Override
-	public void effect(Player player) {
+	public String pass(Player p) {
 		// TODO Auto-generated method stub
-		
-		player.setCraft(player.getCraft() + 2);
-		setEffect("gained 2 Craft Chip");
+		p.setCraft(p.getCraft()+2);
+		return " 2 Craft Chips";
 	}
 
 	@Override
-	public void fail(Player player) {
-		// TODO Auto-generated method stub
-		setEffect("and lost 2 Quality Points.");
-		player.setQualityPoints(player.getQualityPoints() - 2);
-		
-		
+	public void fail(Player p) {
+		p.setQualityPoints(p.getQualityPoints() - 4);
+	}
+
+	@Override
+	public boolean requirement(Player p) {
+		return (p.getLearning() >= 4) && location.contains(p.getLocation());
 	}
 
 }

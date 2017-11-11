@@ -11,9 +11,6 @@ public class main {
 		
 		GameModel model= new GameModel("Lucy");
 		GameView view = new GameView(model);
-		
-		
-		
 		GameController controller=new GameController(model, view);
 		view.setVisible(true);
 	

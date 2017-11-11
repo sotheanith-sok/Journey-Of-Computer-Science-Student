@@ -1,39 +1,34 @@
 package Cards;
+
 import Model.Card;
-import Model.GameModel;
 import Model.Player;
-import View.GameView;
+
 public class Card05 extends Card {
 
-	
-	
-	public Card05()
-	{
-		//super();
-		super.setName("05");
-		super.setCName("CECS 100");
-		super.setCLocation("Play in ECS 308");
-		super.setEffect("gain 1 Craft Token");
+	public Card05() {
+		super("CECS 100", "src/Images/cardm05.png", new String[] { "ECS 308" });
 	}
-	
-	
+
 	@Override
-	public Boolean requirement(Player player ,String location, int stat) {
-		if(player.getLocation().equals("ECS 308") )
-		{
-			return true;
+	public String pass(Player p) {
+		if (p.isHuman() == true) {
+			// TODO Auto-generated method stub
+			this.dialogOption(true, true, true, p);
+			return "";
+
+		} else {
+			int i = (int) Math.random() * 3;
+			if (i == 0) {
+				p.setLearning(p.getLearning() + 1);
+				return " 1 Learning Chip";
+			} else if (i==1){
+				p.setIntegrity(p.getIntegrity() + 1);
+				return " 1 Integrity Chip";
+			} else {
+				p.setCraft(p.getCraft() + 1);
+				return " 1 Craft Chip";
+			}
 		}
-		return false;
-		
 	}
 
-
-	@Override
-	public void effect(Player player) {
-		// TODO Auto-generated method stub
-		player.setCraft(player.getCraft() + 1);
-		setEffect("gained 1 Craft Token");
-	}
-
-	
 }

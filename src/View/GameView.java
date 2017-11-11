@@ -5,6 +5,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -20,8 +21,8 @@ public class GameView extends JFrame {
 	private double width;
 	private double height;
 	private JPanel mapPanel;
-	private controlPanel controlPanel;
-	private infoPanel infoPanel;
+	private JPanel controlPanel;
+	private JPanel infoPanel;
 
 	public GameView(GameModel model) {
 		// Initialize Values
@@ -87,20 +88,22 @@ public class GameView extends JFrame {
 		add(mainPanel);
 	}
 
-	public controlPanel getControlPanel() {
+	public JPanel getControlPanel() {
 		return controlPanel;
 	}
 
-	public infoPanel getInfoPanel() {
+	public JPanel getInfoPanel() {
 		return infoPanel;
 	}
 
 	public JPanel getMapPanel() {
 		return mapPanel;
 	}
+
 	public String getSelectedValue() {
-		return ((controlPanel)controlPanel).getSelectValue();
+		return ((controlPanel) controlPanel).getSelectValue();
 	}
+
 	public void addDrawCardButtListener(ActionListener dcb) {
 		((controlPanel) controlPanel).addDrawCardButtListener(dcb);
 	}
@@ -112,10 +115,48 @@ public class GameView extends JFrame {
 	public void addPlayCardButtonListener(ActionListener pbc) {
 		((controlPanel) controlPanel).addPlayCardButtonListener(pbc);
 	}
-	public void updateAvailableLocation() {
-		((controlPanel)controlPanel).upDateLocation();
+
+	public void addCardButtonListener(MouseListener bc) {
+		((controlPanel) controlPanel).addCardButtonListener(bc);
 	}
-	public void updateFeedback(Player p) {
-		((infoPanel)infoPanel).updateFeedback(p);
+
+	public void updateAvailableLocation() {
+		((controlPanel) controlPanel).upDateLocation();
+	}
+
+	public void updateFeedback(String p) {
+		((infoPanel) infoPanel).updateFeedback(p);
+	}
+
+	public void updateScoreBoard() {
+		((infoPanel) infoPanel).updateScoreBoard();
+	}
+
+	public void updatePlayerSelectedCard() {
+		((controlPanel) controlPanel).updatePlayerSelectedCard();
+	}
+
+	public void switchOnDrawButton() {
+		((controlPanel) controlPanel).switchOnDrawButton();
+	}
+
+	public void switchOffDrawButton() {
+		((controlPanel) controlPanel).switchOffDrawButton();
+	}
+
+	public void switchOnPlayButton() {
+		((controlPanel) controlPanel).switchOnPlayButton();
+	}
+
+	public void switchOffPlayButton() {
+		((controlPanel) controlPanel).switchOffPlayButton();
+	}
+
+	public void switchOnMoveButton() {
+		((controlPanel) controlPanel).switchOnMoveButton();
+	}
+
+	public void switchOffMoveButton() {
+		((controlPanel) controlPanel).switchOffMoveButton();
 	}
 }

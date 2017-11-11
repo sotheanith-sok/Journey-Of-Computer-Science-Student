@@ -3,7 +3,6 @@ package View;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.DefaultListModel;
@@ -16,13 +15,14 @@ public class leftPanel extends JPanel {
 	private JButton drawCardButton;
 	private JButton moveButton;
 	private JButton playCardButton;
+
 	public leftPanel(JList<String> list) {
 		setLayout(new GridBagLayout());
 		GridBagConstraints gbc = new GridBagConstraints();
 		drawCardButton = new JButton("Draw Card");
 		moveButton = new JButton("Move");
 		playCardButton = new JButton("Play Card");
-		gbc.fill=GridBagConstraints.VERTICAL;
+		gbc.fill = GridBagConstraints.VERTICAL;
 		gbc.anchor = GridBagConstraints.WEST;
 		gbc.insets = new Insets(5, 5, 5, 5);
 		gbc.gridx = 0;
@@ -30,32 +30,31 @@ public class leftPanel extends JPanel {
 		gbc.gridwidth = 20;
 		gbc.gridheight = 10;
 		gbc.weightx = 1;
-		gbc.weighty = 0.3;	
-		gbc.ipadx=10;
-		
-		add(drawCardButton,gbc);
-		
+		gbc.weighty = 0.3;
+		gbc.ipadx = 10;
+
+		add(drawCardButton, gbc);
+
 		gbc.insets = new Insets(5, 5, 5, 5);
 		gbc.gridx = 0;
 		gbc.gridy = 10;
 		gbc.gridwidth = 20;
 		gbc.gridheight = 10;
 		gbc.weightx = 1;
-		gbc.weighty = 0.3;	
-		gbc.ipadx=40;
-		
-		add(moveButton,gbc);
-		
+		gbc.weighty = 0.3;
+		gbc.ipadx = 40;
+
+		add(moveButton, gbc);
+
 		gbc.insets = new Insets(5, 5, 5, 5);
 		gbc.gridx = 0;
 		gbc.gridy = 20;
 		gbc.gridwidth = 20;
 		gbc.gridheight = 10;
-		gbc.weightx =1;
-		gbc.weighty = 0.3;	
-		gbc.ipadx=17;
-		add(playCardButton,gbc);
-		
+		gbc.weightx = 1;
+		gbc.weighty = 0.3;
+		gbc.ipadx = 17;
+		add(playCardButton, gbc);
 
 		JScrollPane listScrollable = new JScrollPane(list);
 		listScrollable.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
@@ -66,10 +65,11 @@ public class leftPanel extends JPanel {
 		gbc.gridwidth = 40;
 		gbc.gridheight = 10;
 		gbc.weightx = 1;
-		gbc.weighty = 0.7;	
-		gbc.ipadx=100;
-		add(listScrollable,gbc);
+		gbc.weighty = 0.7;
+		gbc.ipadx = 100;
+		add(listScrollable, gbc);
 	}
+
 	public void addDrawCardButtListener(ActionListener dcb) {
 		drawCardButton.addActionListener(dcb);
 	}
@@ -81,5 +81,28 @@ public class leftPanel extends JPanel {
 	public void addPlayCardButtonListener(ActionListener pbc) {
 		playCardButton.addActionListener(pbc);
 	}
-	
+
+	public void switchOnDrawButton() {
+		drawCardButton.setEnabled(true);
+	}
+
+	public void switchOffDrawButton() {
+		drawCardButton.setEnabled(false);
+	}
+
+	public void switchOnPlayButton() {
+		playCardButton.setEnabled(true);
+	}
+
+	public void switchOffPlayButton() {
+		playCardButton.setEnabled(false);
+	}
+
+	public void switchOnMoveButton() {
+		moveButton.setEnabled(true);
+	}
+
+	public void switchOffMoveButton() {
+		moveButton.setEnabled(false);
+	}
 }

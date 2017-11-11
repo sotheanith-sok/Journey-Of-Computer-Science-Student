@@ -1,51 +1,19 @@
 package Cards;
 
-import Model.Card;
-import Model.GameModel;
-import Model.Player;
-import View.GameView;
 
+import Model.Card;
+import Model.Player;
 
 public class Card00 extends Card{
-
 	
-	
-	public Card00()
-	{
-		//super();
-		super.setName("00");
-		super.setCName("CECS 100");
-		super.setCLocation("Play in ECS 302 or in ECS 308");
-		super.setEffect("gain 1 Learning Chip");
+	public Card00(){
+		super("CECS 100", "src/Images/cardm00.png", new String[] {"ECS 302", "ECS 308"});
 	}
-
-
 	@Override
-	public Boolean requirement(Player player ,String location, int stat) {
-		if(player.getLocation().equals("ECS 308") || player.getLocation().equals("ECS 302") )
-		{
-			return true;
-		}
-		return false;
-		// TODO Auto-generated method stub
-		
+	public String pass(Player p) {
+		p.setLearning(p.getLearning()+1);
+		return "1 Learning Chip";
 	}
-
-	@Override
-	public void effect(Player player) {
-		// TODO Auto-generated method stub
-		//player.setQualityPoints();
-		player.setLearning(player.getLearning() + 1);
-		setEffect("gained 1 Learning Chip");
-		
-	}
-
-	
-
-
-	
-
-	
 	
 
 }

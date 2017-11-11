@@ -7,6 +7,7 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
@@ -20,7 +21,7 @@ public class mapPanel extends JPanel {
 
 	public mapPanel(GameModel model) {
 		// Load Images
-		this.model=model;
+		this.model = model;
 		try {
 			map = ImageIO.read(new File("src/Images/csulbMap.png"));
 		} catch (IOException e) {
@@ -36,18 +37,21 @@ public class mapPanel extends JPanel {
 		g.drawImage(map, 0, 0, this); // paints the image of the map onto the
 										// background
 
-		Player[] list=model.getPlayerList();
+		ArrayList<Player> playerList = model.getPlayerList();
 		// draw Rectangle2D.Double
-		//Draw player 1
+		// Draw player 1
 		g.setFont(new Font("TimesRoman", Font.BOLD, 50));
 		g.setColor(Color.MAGENTA);
-		g.drawString(list[0].getName(), (int)(model.getPlayerCurrentLocationCoordinate(list[0]).getX()), (int)(model.getPlayerCurrentLocationCoordinate(list[0]).getY()));
-		//Draw player 2
+		g.drawString(playerList.get(0).getName(), (int) (model.getPlayerCoordinate(playerList.get(0)).getX()),
+				(int) (model.getPlayerCoordinate(playerList.get(0)).getY()));
+		// Draw player 2
 		g.setColor(Color.BLUE);
-		g.drawString(list[1].getName(), (int)model.getPlayerCurrentLocationCoordinate(list[1]).getX(), (int)model.getPlayerCurrentLocationCoordinate(list[1]).getY()-35);
-		//Draw player 3
+		g.drawString(playerList.get(1).getName(), (int) model.getPlayerCoordinate(playerList.get(1)).getX(),
+				(int) model.getPlayerCoordinate(playerList.get(1)).getY() - 35);
+		// Draw player 3
 		g.setColor(Color.ORANGE);
-		g.drawString(list[2].getName(), (int)model.getPlayerCurrentLocationCoordinate(list[2]).getX(), (int)model.getPlayerCurrentLocationCoordinate(list[2]).getY()-70);
+		g.drawString(playerList.get(2).getName(), (int) model.getPlayerCoordinate(playerList.get(2)).getX(),
+				(int) model.getPlayerCoordinate(playerList.get(2)).getY() - 70);
 	}
 
 }

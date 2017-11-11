@@ -1,65 +1,31 @@
 package Cards;
 
-import javax.swing.JOptionPane;
-
 import Model.Card;
-import Model.GameModel;
 import Model.Player;
-import View.GameView;
 
+public class Card11 extends Card {
 
-public class Card11 extends Card{
-
-	
-	public Card11()
-	{
-		//super();
-		super.setName("11");
-		super.setCName("Buddy Up");
-		super.setCLocation("Play in EAT Room or George Allen Field");
-		super.setEffect("gain 1 Learning Chip or gain 1 Craft Chip");
-	}
-
-
-	@Override
-	public Boolean requirement(Player player ,String location, int stat) {
-		if(player.getLocation().equals("Eat Club") || player.getLocation().equals("George Allen Field") )
-		{
-			return true;
-		}
-		return false;
-		// TODO Auto-generated method stub
-		
+	public Card11() {
+		super("Buddy Up: Joining EAT or Soccer Team", "src/Images/cardm11.png",
+				new String[] { "Eat Club", "George Allen Field" });
 	}
 
 	@Override
-	public void effect(Player player) {
+	public String pass(Player p) {
 		// TODO Auto-generated method stub
-		
-		
-		String[] options = {"Get 1 Learning Chip" , "Get 1 Craft Chip"};
-		Object chip = null;
-		while(chip == null)
-		{
-			chip = JOptionPane.showInputDialog(null, "Select One",
-		        "", JOptionPane.QUESTION_MESSAGE, null, options , options[0]);
+		if (p.isHuman() == true) {
+			this.dialogOption(false, true, true, p);
+			return "";
+		} else {
+			int i = (int) Math.random() * 2;
+			if (i == 0) {
+				p.setLearning(p.getLearning() + 1);
+				return " 1 Learning Chip";
+			} else {
+				p.setCraft(p.getCraft() + 1);
+				return " 1 Craft Chip";
+			}
 		}
-		if(chip.equals(options[0]))
-		{
-			player.setLearning(player.getLearning() + 1);
-			setEffect("gained 1 Learning Chip");
-		}
-		else if(chip.equals(options[1]))
-		{
-			player.setCraft(player.getCraft() + 1);
-			setEffect("gained 1 Craft Chip");
-		}
-		
 	}
-
-	
-
-	
-	
 
 }

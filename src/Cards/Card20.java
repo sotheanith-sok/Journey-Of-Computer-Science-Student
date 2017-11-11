@@ -1,47 +1,28 @@
 package Cards;
 import Model.Card;
-import Model.GameModel;
 import Model.Player;
-import View.GameView;
 public class Card20 extends Card {
 
 	
 	
-	public Card20()
-	{
-		//super();
-		super.setName("20");
-		super.setCName("Make the Dean's List");
-		super.setCLocation("Play in North Hall or South Hall");
-		super.setEffect("Prerequiste: 6 Learning Chips , gain 5 Quality Points; Fail : Go to Student Parking");
-	}
-	
-	
-	@Override
-	public Boolean requirement(Player player ,String location, int stat) {
-		if( ( (player.getLocation().equals("North Hall")) || (player.getLocation().equals("South Hall"))   ) && player.getLearning() >= 6 )
-		{
-			return true;
-		}
-		return false;
-		
+	public Card20() {
+		super("Make the Dean's List", "src/Images/cardm20.png", new String[] {"North Hall", "South Hall"});
 	}
 
-
 	@Override
-	public void effect(Player player) {
+	public String pass(Player p) {
 		// TODO Auto-generated method stub
-		player.setQualityPoints(player.getQualityPoints()+ 5);
-		setEffect("gained 5 Quality Points");
+		p.setQualityPoints(p.getQualityPoints()+5);
+		return "5 Quality Points";
 	}
-
 	@Override
-	public void fail(Player player) {
-		// TODO Auto-generated method stub
-		setEffect("and was moved to the Student Parking");
-		player.setLocation("Student Parking");
-		
-		
+	public void fail(Player p) {
+		p.setQualityPoints(p.getQualityPoints()-2);
+		p.setLocation("Student Parking");
+	}
+	@Override
+	public boolean requirement(Player p) {
+		return (p.getLearning()>=6)&&location.contains(p.getLocation());
 	}
 
 }

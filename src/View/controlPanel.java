@@ -8,6 +8,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.ArrayList;
@@ -21,10 +22,9 @@ import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTabbedPane;
 import javax.swing.ListModel;
 
-import Model.Deck;
+import Model.Card;
 import Model.GameModel;
 import Model.Player;
 
@@ -32,7 +32,7 @@ public class controlPanel extends JPanel {
 	private JList<String> list;
 	private DefaultListModel<String> availableLocation;
 	JPanel leftPanel;
-	rightPanel rightPanel;
+	JPanel rightPanel;
 	GameModel model;
 
 	public controlPanel(GameModel model) {
@@ -45,12 +45,10 @@ public class controlPanel extends JPanel {
 		leftPanel = new leftPanel(list);
 
 		// Right Panel
-		//JPanel rightPanel = new rightPanel();
-		
-		rightPanel = new rightPanel(model.getPlayerList()[0].getHand());
+		rightPanel = new rightPanel(model.getPlayerList().get(0).getSelectedCard());
+
 		GridBagConstraints gbc = new GridBagConstraints();
 		gbc.fill = GridBagConstraints.HORIZONTAL;
-		;
 		gbc.insets = new Insets(0, 10, 0, 0);
 		gbc.gridx = 0;
 		gbc.gridy = 0;
@@ -71,19 +69,24 @@ public class controlPanel extends JPanel {
 	}
 
 	public void addDrawCardButtListener(ActionListener dcb) {
-		((leftPanel)leftPanel).addDrawCardButtListener(dcb);
+		((leftPanel) leftPanel).addDrawCardButtListener(dcb);
 	}
 
 	public void addMoveButtonListener(ActionListener mb) {
-		((leftPanel)leftPanel).addMoveButtonListener(mb);
+		((leftPanel) leftPanel).addMoveButtonListener(mb);
 	}
 
 	public void addPlayCardButtonListener(ActionListener pbc) {
-		((leftPanel)leftPanel).addPlayCardButtonListener(pbc);
+
+		((leftPanel) leftPanel).addPlayCardButtonListener(pbc);
+	}
+
+	public void addCardButtonListener(MouseListener cb) {
+		((rightPanel) rightPanel).addCardButtonListener(cb);
 	}
 
 	public void upDateLocation() {
-		ArrayList<String> s = new ArrayList<String>(model.getAvaialableLocation(model.getPlayerList()[0]));
+		ArrayList<String> s = new ArrayList<String>(model.getAvailableLocation(model.getPlayerList().get(0)));
 		availableLocation.clear();
 		for (String val : s)
 			availableLocation.addElement(val);
@@ -92,10 +95,33 @@ public class controlPanel extends JPanel {
 	public String getSelectValue() {
 		return list.getSelectedValue();
 	}
-	
-	public rightPanel getRightPanel()
-	{
-		return rightPanel;
+
+	public void updatePlayerSelectedCard() {
+		((rightPanel) rightPanel).updateIcon(model.getPlayerList().get(0).getSelectedCard());
+	}
+
+	public void switchOnDrawButton() {
+		((leftPanel) leftPanel).switchOnDrawButton();
+	}
+
+	public void switchOffDrawButton() {
+		((leftPanel) leftPanel).switchOffDrawButton();
+	}
+
+	public void switchOnPlayButton() {
+		((leftPanel) leftPanel).switchOnPlayButton();
+	}
+
+	public void switchOffPlayButton() {
+		((leftPanel) leftPanel).switchOffPlayButton();
+	}
+
+	public void switchOnMoveButton() {
+		((leftPanel) leftPanel).switchOnMoveButton();
+	}
+
+	public void switchOffMoveButton() {
+		((leftPanel) leftPanel).switchOffMoveButton();
 	}
 
 }

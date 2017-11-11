@@ -1,47 +1,27 @@
 package Cards;
 import Model.Card;
-import Model.GameModel;
 import Model.Player;
-import View.GameView;
 public class Card15 extends Card {
 
 	
 	
-	public Card15()
-	{
-		//super();
-		super.setName("15");
-		super.setCName("Physics 151");
-		super.setCLocation("Play in ECS 308");
-		super.setEffect("Prerequiste: 3 Craft , gain 5 Quality Points;, Fail : Lose 3 Quality Points");
-	}
-	
-	
-	@Override
-	public Boolean requirement(Player player ,String location, int stat) {
-		if(player.getLocation().equals("ECS 308") && player.getCraft() >= 3)
-		{
-			return true;
-		}
-		return false;
-		
+	public Card15() {
+		super("Physics 151", "src/Images/cardm15.png", new String[] {"ECS 308"});
 	}
 
-
 	@Override
-	public void effect(Player player) {
+	public String pass(Player p) {
 		// TODO Auto-generated method stub
-		player.setQualityPoints(player.getQualityPoints()+ 5);
-		setEffect("gained 5 Quality Points");
+		p.setQualityPoints(p.getQualityPoints()+5);
+		return "5 Quality Points";
 	}
-
 	@Override
-	public void fail(Player player) {
-		// TODO Auto-generated method stub
-		setEffect("and lost 3 quality points.");
-		player.setQualityPoints(player.getQualityPoints()-3);
-		
-		
+	public void fail(Player p) {
+		p.setQualityPoints(p.getQualityPoints()-3);
+	}
+	@Override
+	public boolean requirement(Player p) {
+		return (p.getCraft()>=3)&&location.contains(p.getLocation());
 	}
 
 }

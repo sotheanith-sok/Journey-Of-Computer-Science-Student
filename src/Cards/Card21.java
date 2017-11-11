@@ -1,48 +1,28 @@
 package Cards;
+
 import Model.Card;
-import Model.GameModel;
 import Model.Player;
-import View.GameView;
+
 public class Card21 extends Card {
 
-	
-	
-	public Card21()
-	{
-		//super();
-		super.setName("21");
-		super.setCName("Pass Soccer Class");
-		super.setCLocation("Play in George Allen Field");
-		super.setEffect("Prerequiste: 5 Craft Chips , gain 5 Quality Points; Fail : Lose 3 Quality Points");
-	}
-	
-	
-	@Override
-	public Boolean requirement(Player player ,String location, int stat) {
-		if(player.getLocation().equals("George Allen Field") && player.getCraft() >= 5 )
-		{
-			return true;
-		}
-		return false;
-		
+	public Card21() {
+		super("Pass Soccer Class", "src/Images/cardm21.png", new String[] {"George Allen Field"});
 	}
 
-
 	@Override
-	public void effect(Player player) {
+	public String pass(Player p) {
 		// TODO Auto-generated method stub
-		player.setQualityPoints(player.getQualityPoints()+ 5);
-		setEffect("gained 5 Quality Points");
+		p.setQualityPoints(p.getQualityPoints() + 5);
+		return "5 Quality Points";
 	}
 
 	@Override
-	public void fail(Player player) {
-		// TODO Auto-generated method stub
-		setEffect("and was moved to the Room of Retirement");
-		player.setLocation("Room of Retirement");
-		player.setQualityPoints(player.getQualityPoints()-3);
-		
-		
+	public void fail(Player p) {
+		p.setQualityPoints(p.getQualityPoints() - 5);
 	}
 
+	@Override
+	public boolean requirement(Player p) {
+		return (p.getCraft() >= 5) && location.contains(p.getLocation());
+	}
 }

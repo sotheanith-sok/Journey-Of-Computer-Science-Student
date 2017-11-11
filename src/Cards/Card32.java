@@ -1,60 +1,35 @@
 package Cards;
+
 import Model.Card;
-import Model.GameModel;
 import Model.Player;
-import View.GameView;
+
 public class Card32 extends Card {
 
-	
-	
-	public Card32()
-	{
-		//super();
-		super.setName("32");
-		super.setCName("The Outpost");
-		super.setCLocation("Play in any space outside ECS except Forbidden Parking");
-		super.setEffect("Get 1 Chip of Your Choice");
+	public Card32() {
+		super("The Outpost", "src/Images/cardm32.png",
+				new String[] { "West Walkway", "Library", "LA5", "Bratwurst Hall", "East Walkway", "Rec Center",
+						"Student Parking", "Pyramid", "Japanese Garden", "George Allen Field" });
 	}
-	
-	
+
 	@Override
-	public Boolean requirement(Player player ,String location, int stat) {
-		
-		boolean valid = true;
-		
-			for(String room : getECS())
-			{
-				
-				if(player.getLocation().equals(room) || player.getLocation().equals("Forbidden Parking"))
-				{
-					valid = false;
-					break;
-				}
-				
+	public String pass(Player p) {
+		// TODO Auto-generated method stub
+		if (p.isHuman() == true) {
+			this.dialogOption(true, true, true, p);
+			return "";
+		} else {
+			int i = (int) Math.random() * 3;
+			if (i == 0) {
+				p.setLearning(p.getLearning() + 1);
+				return " 1 Learning Chip ";
+			} else if (i == 1) {
+				p.setIntegrity(p.getIntegrity() + 1);
+				return " 1 Integrity Chip ";
+			} else {
+				p.setCraft(p.getCraft() + 1);
+				return " 1 Craft Chip ";
 			}
-		
-		return valid;
-		
-		
-		
-	}
-
-
-	@Override
-	public void effect(Player player) {
-		// TODO Auto-generated method stub
-		
-		setEffect("gained 5 Quality Points");
-	}
-
-	@Override
-	public void fail(Player player) {
-		// TODO Auto-generated method stub
-		player.setQualityPoints(player.getQualityPoints() -5);
-		setEffect("and lost 5 Quality Points.");
-		
-		
-		
+		}
 	}
 
 }

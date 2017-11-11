@@ -1,151 +1,124 @@
 package Model;
-
-import java.io.*;
 import java.util.ArrayList;
-import java.util.*;
-import Cards.*;
-import View.GameView;
+import java.util.Collections;
+
+import Cards.Card00;
+import Cards.Card01;
+import Cards.Card02;
+import Cards.Card03;
+import Cards.Card04;
+import Cards.Card05;
+import Cards.Card06;
+import Cards.Card07;
+import Cards.Card08;
+import Cards.Card09;
+import Cards.Card10;
+import Cards.Card11;
+import Cards.Card12;
+import Cards.Card13;
+import Cards.Card14;
+import Cards.Card15;
+import Cards.Card16;
+import Cards.Card17;
+import Cards.Card18;
+import Cards.Card19;
+import Cards.Card20;
+import Cards.Card21;
+import Cards.Card22;
+import Cards.Card23;
+import Cards.Card24;
+import Cards.Card25;
+import Cards.Card26;
+import Cards.Card27;
+import Cards.Card28;
+import Cards.Card29;
+import Cards.Card30;
+import Cards.Card31;
+import Cards.Card32;
+import Cards.Card33;
+import Cards.Card34;
+import Cards.Card35;
+import Cards.Card36;
+import Cards.Card37;
+import Cards.Card38;
+import Cards.Card39;
 /**
  * 
  * @author Sotheanith Sok
  *
  *This is deck used to initialize and store all cards. It is also contains function for add and remove card from the deck.
  */
-public class Deck extends ArrayList<Card>{
-//	private ArrayList<Card> deck;
-	//private ArrayList<Card> hand;
-	//private ArrayList<Card> availableCards;
-	private int discardCard=0 , maxDeckSize = 5;
-	private GameModel model;
-	private GameView view;
-	//public int cardIndex = 0;
-	public HashMap cardMap =new HashMap();
-	
-	
-	
-	public Deck(GameModel model)  {
-		this.model = model;
+public class Deck {
+	private ArrayList<Card> inPlayCardDeck;
+	private ArrayList<Card> discardCardDeck;
+	public Deck() {
+		inPlayCardDeck = new ArrayList<Card>();
+		discardCardDeck = new ArrayList<Card>();
 		instantiateDeck();
-		//availableCards = new ArrayList<Card>();
-		//instantiateDeck();
-		
 	}
 
-	public void instantiateDeck()
-	{
-		Card 
-			card00 = new Card00(),
-			card01 = new Card01(), 
-			card02 = new Card02(),
-			card03 = new Card03(),
-			card04 = new Card04(),
-			card05 = new Card05(),
-			card06 = new Card06(),
-			card07 = new Card07(),
-			card08 = new Card08(),
-			card09 = new Card09(model),
-			card10 = new Card10(),
-			card11 = new Card11(),
-			card12 = new Card12(),
-			card13 = new Card13(),
-			card14 = new Card14(),
-			card15 = new Card15(),
-			card16 = new Card16(),
-			card17 = new Card17(),
-			card18 = new Card18(),
-			card19 = new Card19(),
-			card20 = new Card20(),
-			card21 = new Card21(),
-			card22 = new Card22(),
-			card23 = new Card23(),
-			card24 = new Card24(),
-			card25 = new Card25(),
-			card26 = new Card26(),
-			card27 = new Card27(),
-			card28 = new Card28(),
-			card29 = new Card29();
-		add(card00);
-		add(card01);
-		add(card02);
-		add(card03);
-		add(card04);
-		add(card05);
-		add(card06);
-		add(card07);
-		add(card08);
-		add(card09);
-		add(card10);
-		add(card11);
-		add(card12);
-		add(card13);
-		add(card14);
-		add(card15);
-		add(card16);
-		add(card17);
-		add(card18);
-		add(card19);
-		add(card20);
-		add(card21);
-		add(card22);
-		add(card23);
-		add(card24);
-		add(card25);
-		add(card26);
-		add(card27);
-		add(card28);
-		add(card29);
-		for(Card c : this)
-		{
-			cardMap.put(c.getName(), c);
-		}
-		Collections.shuffle(this);
-		
-	}
-/*
 	public void instantiateDeck() {
-		
-		for(int i = 0 ; i < maxDeckSize ; i++ )
-		{
-			if(availableCards.size() > 0)
-			{
-				deck.add(availableCards.get(0));
-				availableCards.remove(0);
-			}
-			
-		}
+		inPlayCardDeck.add(new Card00());
+		inPlayCardDeck.add(new Card01());
+		inPlayCardDeck.add(new Card02());
+		inPlayCardDeck.add(new Card03());
+		inPlayCardDeck.add(new Card04());
+		inPlayCardDeck.add(new Card05());
+		inPlayCardDeck.add(new Card06());
+		inPlayCardDeck.add(new Card07());
+		inPlayCardDeck.add(new Card08());
+		inPlayCardDeck.add(new Card09());
+		inPlayCardDeck.add(new Card10());
+		inPlayCardDeck.add(new Card11());
+		inPlayCardDeck.add(new Card12());
+		inPlayCardDeck.add(new Card13());
+		inPlayCardDeck.add(new Card14());
+		inPlayCardDeck.add(new Card15());
+		inPlayCardDeck.add(new Card16());
+		inPlayCardDeck.add(new Card17());
+		inPlayCardDeck.add(new Card18());
+		inPlayCardDeck.add(new Card19());
+		inPlayCardDeck.add(new Card20());
+		inPlayCardDeck.add(new Card21());
+		inPlayCardDeck.add(new Card22());
+		inPlayCardDeck.add(new Card23());
+		inPlayCardDeck.add(new Card24());
+		inPlayCardDeck.add(new Card25());
+		inPlayCardDeck.add(new Card26());
+		inPlayCardDeck.add(new Card27());
+		inPlayCardDeck.add(new Card28());
+		inPlayCardDeck.add(new Card29());
+		inPlayCardDeck.add(new Card30());
+		inPlayCardDeck.add(new Card31());
+		inPlayCardDeck.add(new Card32());
+		inPlayCardDeck.add(new Card33());
+		inPlayCardDeck.add(new Card34());
+		inPlayCardDeck.add(new Card35());
+		inPlayCardDeck.add(new Card36());
+		inPlayCardDeck.add(new Card37());
+		inPlayCardDeck.add(new Card38());
+		inPlayCardDeck.add(new Card39());
+		Collections.shuffle(inPlayCardDeck);
 	}
-	*/
 	public Card removeCard() {
-		Card c = this.get(0);
-		this.remove(0);
+		if(getInPlayCardDeckSize()<5) {
+			inPlayCardDeck.addAll(discardCardDeck);
+			discardCardDeck.clear();
+			Collections.shuffle(inPlayCardDeck);
+		}
+		Card c = inPlayCardDeck.get(0);
+		inPlayCardDeck.remove(0);
 		return c;
 	}
 	
-	
-	/*public ArrayList<Card> getHand()
-	{
-		return hand;
-	}*/
-	/*
-	public ArrayList<Card> getDeck()
-	{
-		return deck;
-	}*/
-	
-	/*
-	public int getCardIndex()
-	{
-		
-		return cardIndex;
+	public int getInPlayCardDeckSize() {
+		return inPlayCardDeck.size();
 	}
-	public void setCardIndex(int cardIndex)
-	{
-		
-		this.cardIndex = cardIndex ;
-	}*/
-	public HashMap getCardMap()
-	{
-		return cardMap;
+	public int getDiscardCardDeckSize() {
+		return discardCardDeck.size();
+	}
+	public void discardCard(Card c) {
+		discardCardDeck.add(c);
 	}
 
 }

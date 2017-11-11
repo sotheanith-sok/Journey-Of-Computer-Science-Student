@@ -1,65 +1,46 @@
 package Cards;
 
-import javax.swing.JOptionPane;
-
 import Model.Card;
-import Model.GameModel;
 import Model.Player;
-import View.GameView;
 
+public class Card23 extends Card {
 
-public class Card23 extends Card{
-
-	
-	
-	public Card23()
-	{
-		//super();
-		super.setName("23");
-		super.setCName("A New Laptop");
-		super.setCLocation("Play in the Computer Lab");
-		super.setEffect("Prerequiste: 4 Integrity , Get 3 Quality Points and 1 Chip of Your Choice; Fail : Discard 1 Game Card ");
-	}
-
-
-	@Override
-	public Boolean requirement(Player player ,String location, int stat) {
-		if((player.getLocation().equals("Computer Lab") && player.getIntegrity() >= 4 ))
-		{
-			return true;
-		}
-		
-		return false;
-		// TODO Auto-generated method stub
-		
+	public Card23() {
+		super("A New Laptop", "src/Images/cardm23.png", new String[] { "Computer Lab" });
 	}
 
 	@Override
-	public void effect(Player player) {
+	public String pass(Player p) {
 		// TODO Auto-generated method stub
-		
-		chooseOne(player, "gained 3 Quality Points and");
-		
-		
+		p.setQualityPoints(p.getQualityPoints() + 3);
+		if (p.isHuman()) {
+			this.dialogOption(true, true, true, p);
+			return " and 3 Quality Points";
+		} else {
+			int i = (int) Math.random() * 3;
+			if (i == 0) {
+				p.setLearning(p.getLearning() + 1);
+				return " 1 Learning Chip and 3 Quality Points";
+			} else if (i == 1) {
+				p.setIntegrity(p.getIntegrity() + 1);
+				return " 1 Integrity Chip and 3 Quality Points";
+			} else {
+				p.setCraft(p.getCraft() + 1);
+				return " 1 Craft Chip and 3 Quality Points";
+			}
+		}
+
 	}
 
 	@Override
-	public void fail(Player player) {
-		// TODO Auto-generated method stub
-		
-		if(player.getHand().size() -1 >= 0)
-		{
-			player.discardACard(this);
-			setEffect("and discarded a card");
-		}
-		else
-		{
-			setEffect("but their hand was empty.");
-		}
+	public void fail(Player p) {
+		p.setQualityPoints(p.getQualityPoints() - 2);
+		p.remove(p.getAllCardName().get(0));
 	}
-	
 
-	
-	
+	@Override
+	public boolean requirement(Player p) {
+		return (p.getIntegrity() >= 4) && location.contains(p.getLocation());
+	}
 
 }

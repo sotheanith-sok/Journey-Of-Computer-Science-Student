@@ -1,47 +1,27 @@
 package Cards;
 import Model.Card;
-import Model.GameModel;
 import Model.Player;
-import View.GameView;
 public class Card16 extends Card {
 
 	
-	
-	public Card16()
-	{
-		//super();
-		super.setName("16");
-		super.setCName("KIN 253, Learning the Rules of Soccer");
-		super.setCLocation("Play in George Allen Field");
-		super.setEffect("Prerequiste: 4 Integrity Chips , gain 2 Craft Chips; Fail : Go to Room of Retirement");
-	}
-	
-	
-	@Override
-	public Boolean requirement(Player player ,String location, int stat) {
-		if(player.getLocation().equals("George Allen Field") && player.getIntegrity() >= 4 )
-		{
-			return true;
-		}
-		return false;
-		
+	public Card16() {
+		super("KIN 253 Learning the Rules of Soccer", "src/Images/cardm16.png", new String[] { "George Allen Field"});
 	}
 
-
 	@Override
-	public void effect(Player player) {
+	public String pass(Player p) {
 		// TODO Auto-generated method stub
-		player.setCraft(player.getCraft()+ 2);
-		setEffect("gained 2 Craft Chips");
+		p.setCraft(p.getCraft()+2);
+		return "2 Craft Points";
 	}
-
 	@Override
-	public void fail(Player player) {
-		// TODO Auto-generated method stub
-		setEffect("and was moved to the Room of Retirement");
-		player.setLocation("Room of Retirement");
-		
-		
+	public void fail(Player p) {
+		p.setQualityPoints(p.getQualityPoints()-2);
+		p.setLocation("Room of Retirement");
+	}
+	@Override
+	public boolean requirement(Player p) {
+		return (p.getIntegrity()>=4)&&location.contains(p.getLocation());
 	}
 
 }

@@ -1,45 +1,23 @@
 package Cards;
 
 import Model.Card;
-import Model.GameModel;
 import Model.Player;
-import View.GameView;
 
 
 public class Card13 extends Card{
 
 	
-	
-	public Card13()
-	{
-		//super();
-		super.setName("13");
-		super.setCName("The Big Game");
-		super.setCLocation("Play in the Pyrimad");
-		super.setEffect("gain 1 Craft Chip and move to the Lactation Lounge");
-	}
-
-
-	@Override
-	public Boolean requirement(Player player ,String location, int stat) {
-		if(player.getLocation().equals("Pyramid"))
-		{
-			return true;
-		}
-		return false;
-		// TODO Auto-generated method stub
-		
+	public Card13() {
+		super("The Big Game", "src/Images/cardm13.png", new String[] { "Pyramid"});
 	}
 
 	@Override
-	public void effect(Player player) {
+	public String pass(Player p) {
 		// TODO Auto-generated method stub
-		player.setCraft(player.getCraft() + 1);
-		setEffect("gained 1 Craft Chip and moved to the Lactation Lounge");
-		player.setLocation("Lactation Lounge");
-		
+		p.setCraft(p.getCraft()+1);
+		p.setLocation("Lactation Lounge");
+		return "";
 	}
-
 	
 	
 
