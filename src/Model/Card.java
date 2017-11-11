@@ -61,13 +61,13 @@ public abstract class Card {
 		if (requirement(p) == true) {
 			String out = pass(p);
 			if (count == 1) {
-				output += " for " + " 1 Integrity Chip" + out;
+				output += " for 1 Integrity Chip" + out;
 			} else if (count == 2) {
-				output += " for " + " 1 Learning Chip" + out;
+				output += " for 1 Learning Chip" + out;
 			} else if (count == 3) {
-				output += " for " + " 1 Craft Chip" + out;
+				output += " for 1 Craft Chip" + out;
 			} else {
-				output += " for " + out;
+				output += " for" + out;
 			}
 		} else {
 			output += " failed.";

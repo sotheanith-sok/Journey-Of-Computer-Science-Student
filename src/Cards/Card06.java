@@ -8,7 +8,7 @@ public class Card06 extends Card {
 	{
 		super("Exercising Mind and Body", 
 				"src/Images/cardm06.png", 
-				new String[] {"Student Recreation"});
+				new String[] {"Rec Center"});
 	}
 	@Override
 	public String pass(Player p) {

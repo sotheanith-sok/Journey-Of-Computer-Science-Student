@@ -104,12 +104,11 @@ public class Player {
 	}
 
 	public void addCard(Card c) {
-		if (playerHand.size() >= 7) {
+		if (playerHand.size() == 7) {
 			deck.discardCard(c);
 		} else {
 			playerHand.add(c);
-		}
-
+		}		
 	}
 
 	public void getNextCard() {

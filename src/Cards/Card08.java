@@ -6,7 +6,7 @@ import Model.Player;
 public class Card08 extends Card {
 
 	public Card08() {
-		super("Enjoying the Peace", "src/Images/cardm08.png", new String[] { "Japanese Gardens" });
+		super("Enjoying the Peace", "src/Images/cardm08.png", new String[] { "Japanese Garden" });
 	}
 
 	@Override
