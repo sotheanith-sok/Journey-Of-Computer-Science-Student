@@ -20,7 +20,7 @@ public class Card14 extends Card{
 	@Override
 	public void fail(Player p) {
 		p.setQualityPoints(p.getQualityPoints()-3);
-		p.remove(p.getAllCardName().get(0));
+		p.remove(p.getAllCardName().get((int)(Math.random()*p.getAllCardName().size())));
 	}
 	@Override
 	public boolean requirement(Player p) {

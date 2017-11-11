@@ -17,7 +17,8 @@ public class Card39 extends Card {
 
 	@Override
 	public void fail(Player p) {
-		p.remove(p.getAllCardName().get(0));
+		p.setQualityPoints(p.getQualityPoints() - 2);
+		p.remove(p.getAllCardName().get((int)(Math.random()*p.getAllCardName().size())));
 	}
 
 	@Override
