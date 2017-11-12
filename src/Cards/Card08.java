@@ -12,7 +12,7 @@ public class Card08 extends Card {
 	@Override
 	public String pass(Player p) {
 		if (p.isHuman() == true) {
-			this.dialogOption(true, true, false, p);
+			dialogChipOption(true, true, false, p);
 			return "";
 		} else {
 			int i = (int) Math.random() * 2;

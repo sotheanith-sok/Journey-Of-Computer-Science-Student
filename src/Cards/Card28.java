@@ -13,7 +13,7 @@ public class Card28 extends Card {
 	public String pass(Player p) {
 		// TODO Auto-generated method stub
 		if (p.isHuman() == true) {
-			this.dialogOption(true, true, true, p);
+			this.dialogChipOption(true, true, true, p);
 			return "";
 		} else {
 			int i = (int) Math.random() * 3;

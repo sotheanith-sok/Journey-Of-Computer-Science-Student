@@ -19,7 +19,7 @@ public abstract class Card {
 	private String path;
 	protected ArrayList<String> location;
 	protected String output = "";
-	int count = 0;
+	protected int count = 0;
 
 	public Card(String name, String path, String[] location) {
 		this.name = name;
@@ -90,7 +90,7 @@ public abstract class Card {
 	 * @param craft
 	 * @param p
 	 */
-	public void dialogOption(boolean integrity, boolean learning, boolean craft, Player p) {
+	public void dialogChipOption(boolean integrity, boolean learning, boolean craft, Player p) {
 		ArrayList<Object> buttonList = new ArrayList<Object>();
 		JButton image1 = new JButton("Integrity", new ImageIcon("src/Images/IntegrityChip.png"));
 		JButton image2 = new JButton("Learning", new ImageIcon("src/Images/LearningChip.png"));
@@ -137,4 +137,27 @@ public abstract class Card {
 				null, buttonList.toArray(new Object[buttonList.size()]), null);
 	}
 
+	public void dialogoRemoveCard(Player p) {
+		ArrayList<Object> buttonList = new ArrayList<Object>();
+		for (int i = 0; i < p.getPlayerHand().size(); i++) {
+			JButton image = new JButton(p.getPlayerHand().get(i).getName(),
+					new ImageIcon(p.getPlayerHand().get(i).getPath()));
+			image.setHorizontalTextPosition(JButton.CENTER);
+			image.setVerticalTextPosition(JButton.EAST);
+			image.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// TODO Auto-generated method stub
+					p.remove(image.getText());
+					JOptionPane.getRootFrame().dispose();
+				}
+			});
+			buttonList.add(image);
+
+		}
+
+		int i = JOptionPane.showOptionDialog(null, null, "Select card to be remove", JOptionPane.DEFAULT_OPTION,
+				JOptionPane.PLAIN_MESSAGE, null, buttonList.toArray(new Object[buttonList.size()]), null);
+	}
 }

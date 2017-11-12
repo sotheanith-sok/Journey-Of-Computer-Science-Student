@@ -14,7 +14,7 @@ public class Card11 extends Card {
 	public String pass(Player p) {
 		// TODO Auto-generated method stub
 		if (p.isHuman() == true) {
-			this.dialogOption(false, true, true, p);
+			this.dialogChipOption(false, true, true, p);
 			return "";
 		} else {
 			int i = (int) Math.random() * 2;

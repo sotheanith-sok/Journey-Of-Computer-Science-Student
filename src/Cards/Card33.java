@@ -15,7 +15,7 @@ public class Card33 extends Card {
 		// TODO Auto-generated method stub
 		p.setQualityPoints(p.getQualityPoints() + 4);
 		if (p.isHuman() == true) {
-			this.dialogOption(true, true, true, p);
+			this.dialogChipOption(true, true, true, p);
 			return " and 4 Quality Points";
 		} else {
 			int i = (int) Math.random() * 3;
@@ -36,7 +36,11 @@ public class Card33 extends Card {
 	public void fail(Player p) {
 		p.setQualityPoints(p.getQualityPoints() - 2);
 		if (p.getPlayerHand().size() > 0)
-			p.remove(p.getAllCardName().get((int) (Math.random() * p.getAllCardName().size())));
+			if (p.isHuman()) {
+				this.dialogoRemoveCard(p);
+			}else {
+				p.remove(p.getAllCardName().get((int) (Math.random() * p.getAllCardName().size())));
+			}
 	}
 
 	@Override

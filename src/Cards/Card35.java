@@ -13,7 +13,7 @@ public class Card35 extends Card {
 		// TODO Auto-generated method stub
 		p.setQualityPoints(p.getQualityPoints() + 3);
 		if (p.isHuman() == true) {
-			this.dialogOption(true, true, true, p);
+			this.dialogChipOption(true, true, true, p);
 			return " and 3 Quality Points";
 		} else {
 			int i = (int) Math.random() * 3;

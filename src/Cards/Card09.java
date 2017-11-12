@@ -14,17 +14,14 @@ public class Card09 extends Card {
 	@Override
 	public String pass(Player p) {
 		// TODO Auto-generated method stub
-		p.setLearning(p.getLearning() + 1);
+		p.setLearning(p.getLearning() + 2);
 		if (p.isHuman()) {
-			Object[] playerCard = p.getAllCardName().toArray(new Object[p.getPlayerHand().size()]);
-			String c = (String) JOptionPane.showInputDialog(null, "Pick a Card to remove:", "Card Effect",
-					JOptionPane.PLAIN_MESSAGE, null, playerCard, null);
-			p.remove(c);
+			this.dialogoRemoveCard(p);
 		}else {
-			p.remove();
+			p.remove(p.getAllCardName().get((int) (Math.random() * p.getAllCardName().size())));
 		}
 
-		return "2 Integrity Chip";
+		return "2 Learning Chip";
 	}
 
 }

@@ -143,11 +143,13 @@ public class Player {
 	public void remove(String s) {
 		int i = 0;
 		for (; i < getPlayerHand().size(); i++) {
-			if (getPlayerHand().get(i).getName() == s)
+			if (getPlayerHand().get(i).getName().compareTo(s)==0)
 				break;
 		}
+
 		if (getPlayerHand().size() > 0)
 			deck.discardCard(getPlayerHand().remove(i));
+			
 	}
 
 	public void addOneMoreCard() {

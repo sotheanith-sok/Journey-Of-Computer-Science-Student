@@ -18,14 +18,13 @@ public class GameModel {
 		location = new Location();
 		deck = new Deck();
 		playerList = new ArrayList<Player>();
-
 		// Create Player
 		playerList.add(new Player(promptName(), true,deck));
 		playerList
 				.add(new Player(possiblePlayerNameList[(int) (Math.random() * possiblePlayerNameList.length)], false, deck));
 		playerList
 				.add(new Player(possiblePlayerNameList[(int) (Math.random() * possiblePlayerNameList.length)], false, deck));
-		for (int i = 0; i < playerList.size(); i++) {
+		for (int i = 1; i < playerList.size(); i++) {
 			for (int y = 0; y < 5; y++) {
 				playerList.get(i).addCard(deck.removeCard());
 			}
@@ -83,7 +82,6 @@ public class GameModel {
 		return userName;
 	}
 	public String play(Player p) {
-		System.out.println(p.getName()+" has "+p.getPlayerHand().size());
 		Card c=p.remove();
 		String output=c.effect(p);
 		deck.discardCard(c);
