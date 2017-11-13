@@ -24,7 +24,7 @@ public class GameModel {
 				.add(new Player(possiblePlayerNameList[(int) (Math.random() * possiblePlayerNameList.length)], false, deck));
 		playerList
 				.add(new Player(possiblePlayerNameList[(int) (Math.random() * possiblePlayerNameList.length)], false, deck));
-		for (int i = 1; i < playerList.size(); i++) {
+		for (int i = 0; i < playerList.size(); i++) {
 			for (int y = 0; y < 5; y++) {
 				playerList.get(i).addCard(deck.removeCard());
 			}
