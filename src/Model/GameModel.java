@@ -29,9 +29,6 @@ public class GameModel {
 				playerList.get(i).addCard(deck.removeCard());
 			}
 		}
-		playerList.get(0).setCraft(1000);
-		playerList.get(0).setLearning(1000);
-		playerList.get(0).setIntegrity(1000);
 	}
 
 	public void move(Player p, String location) {
