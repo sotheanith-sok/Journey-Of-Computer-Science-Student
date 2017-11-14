@@ -34,7 +34,11 @@ public class Card28 extends Card {
 	public void fail(Player p) {
 		p.setQualityPoints(p.getQualityPoints() - 2);
 		if (p.getPlayerHand().size() > 0)
-			p.remove(p.getAllCardName().get((int) (Math.random() * p.getAllCardName().size())));
+			if (p.isHuman()) {
+				this.dialogoRemoveCard(p);
+			}else {
+				p.remove(p.getAllCardName().get((int) (Math.random() * p.getAllCardName().size())));
+			}
 	}
 
 	@Override

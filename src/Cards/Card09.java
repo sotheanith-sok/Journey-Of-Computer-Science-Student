@@ -15,11 +15,12 @@ public class Card09 extends Card {
 	public String pass(Player p) {
 		// TODO Auto-generated method stub
 		p.setLearning(p.getLearning() + 2);
-		if (p.isHuman()) {
-			this.dialogoRemoveCard(p);
-		}else {
-			p.remove(p.getAllCardName().get((int) (Math.random() * p.getAllCardName().size())));
-		}
+		if (p.getPlayerHand().size() > 0)
+			if (p.isHuman()) {
+				this.dialogoRemoveCard(p);
+			}else {
+				p.remove(p.getAllCardName().get((int) (Math.random() * p.getAllCardName().size())));
+			}
 
 		return " 2 Learning Chip";
 	}

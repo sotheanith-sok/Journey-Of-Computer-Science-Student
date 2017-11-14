@@ -1,5 +1,6 @@
 package Model;
 
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -121,6 +122,7 @@ public class Player {
 							new ImageIcon(getPlayerHand().get(i).getPath()));
 					image.setHorizontalTextPosition(JButton.CENTER);
 					image.setVerticalTextPosition(JButton.EAST);
+					image.setFont(new Font("Arial", Font.PLAIN, 0));
 					image.addActionListener(new ActionListener() {
 
 						@Override

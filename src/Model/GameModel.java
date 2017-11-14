@@ -5,6 +5,8 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
+import Cards.Card09;
+
 public class GameModel {
 	Location location;
 	Deck deck;

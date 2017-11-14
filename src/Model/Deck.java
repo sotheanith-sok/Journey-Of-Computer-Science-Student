@@ -101,14 +101,13 @@ public class Deck {
 		Collections.shuffle(inPlayCardDeck);
 	}
 	public Card removeCard() {
-		if(getInPlayCardDeckSize()<15) {
+		if(getInPlayCardDeckSize()<5) {
 
 			inPlayCardDeck.addAll(discardCardDeck);
 			discardCardDeck.clear();
-			//Collections.shuffle(inPlayCardDeck);
+			Collections.shuffle(inPlayCardDeck);
 		}
-		Card c = inPlayCardDeck.get(0);
-		inPlayCardDeck.remove(0);
+		Card c = inPlayCardDeck.remove(0);
 		return c;
 	}
 	

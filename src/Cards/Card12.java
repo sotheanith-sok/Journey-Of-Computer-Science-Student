@@ -16,7 +16,7 @@ public class Card12 extends Card{
 		// TODO Auto-generated method stub
 		p.setCraft(p.getCraft()+1);
 		p.setLocation("Lactation Lounge");
-		return "";
+		return " 1 Craft Chip";
 	}
 
 
