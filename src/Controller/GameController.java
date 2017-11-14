@@ -59,6 +59,7 @@ public class GameController {
 			// Human
 			view.updateFeedback(model.play(model.getPlayerList().get(0)));
 			view.getMapPanel().repaint();
+			view.updateAvailableLocation();
 			// AI 1
 			model.drawCard(model.getPlayerList().get(1));
 			for (int i = 0; i < ((int) (Math.random() * 3) + 1); i++) {
