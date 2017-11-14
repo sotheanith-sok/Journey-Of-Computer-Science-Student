@@ -13,7 +13,7 @@ public class Card17 extends Card {
 	public String pass(Player p) {
 		// TODO Auto-generated method stub
 		p.setLearning(p.getLearning()+3);
-		return "3 Learning Points";
+		return " 3 Learning Points";
 	}
 	@Override
 	public void fail(Player p) {

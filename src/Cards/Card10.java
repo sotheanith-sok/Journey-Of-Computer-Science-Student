@@ -16,7 +16,7 @@ public class Card10 extends Card{
 	public String pass(Player p) {
 		// TODO Auto-generated method stub
 		p.setLearning(p.getLearning()+1);
-		return "1 Learning Chip";
+		return " 1 Learning Chip";
 	}
 
 

@@ -14,7 +14,7 @@ public class Card06 extends Card {
 	public String pass(Player p) {
 		// TODO Auto-generated method stub
 		p.setIntegrity(p.getIntegrity()+1);
-		return "1 Integrity Chip";
+		return " 1 Integrity Chip";
 	}
 
 

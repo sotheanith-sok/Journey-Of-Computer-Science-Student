@@ -12,7 +12,7 @@ public class Card16 extends Card {
 	public String pass(Player p) {
 		// TODO Auto-generated method stub
 		p.setCraft(p.getCraft()+2);
-		return "2 Craft Points";
+		return " 2 Craft Points";
 	}
 	@Override
 	public void fail(Player p) {

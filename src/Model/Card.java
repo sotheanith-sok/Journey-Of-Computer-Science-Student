@@ -133,7 +133,7 @@ public abstract class Card {
 		if (integrity == true)
 			buttonList.add(image1);
 
-		JOptionPane.showOptionDialog(null, null, "PICK ONE", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
+		JOptionPane.showOptionDialog(null, "Pick the desire chip:", "Chip Options", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
 				null, buttonList.toArray(new Object[buttonList.size()]), null);
 	}
 
@@ -157,7 +157,7 @@ public abstract class Card {
 
 		}
 
-		int i = JOptionPane.showOptionDialog(null, null, "Select card to be remove", JOptionPane.DEFAULT_OPTION,
+		JOptionPane.showOptionDialog(null, "Select card to be remove: ", "Card Effect", JOptionPane.DEFAULT_OPTION,
 				JOptionPane.PLAIN_MESSAGE, null, buttonList.toArray(new Object[buttonList.size()]), null);
 	}
 }

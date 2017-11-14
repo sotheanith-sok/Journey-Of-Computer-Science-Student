@@ -12,7 +12,7 @@ public class Card18 extends Card {
 	public String pass(Player p) {
 		// TODO Auto-generated method stub
 		p.setQualityPoints(p.getQualityPoints()+5);
-		return "5 Quality Points";
+		return " 5 Quality Points";
 	}
 	@Override
 	public void fail(Player p) {

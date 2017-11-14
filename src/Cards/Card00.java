@@ -12,7 +12,7 @@ public class Card00 extends Card{
 	@Override
 	public String pass(Player p) {
 		p.setLearning(p.getLearning()+1);
-		return "1 Learning Chip";
+		return " 1 Learning Chip";
 	}
 	
 

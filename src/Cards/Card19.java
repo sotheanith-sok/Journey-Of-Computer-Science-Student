@@ -13,7 +13,7 @@ public class Card19 extends Card {
 		// TODO Auto-generated method stub
 		p.setQualityPoints(p.getQualityPoints()+5);
 		p.setIntegrity(p.getIntegrity()+1);
-		return "5 Quality Points and 1 Integrity Point";
+		return " 5 Quality Points and 1 Integrity Point";
 	}
 	@Override
 	public void fail(Player p) {

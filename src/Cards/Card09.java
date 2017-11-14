@@ -21,7 +21,7 @@ public class Card09 extends Card {
 			p.remove(p.getAllCardName().get((int) (Math.random() * p.getAllCardName().size())));
 		}
 
-		return "2 Learning Chip";
+		return " 2 Learning Chip";
 	}
 
 }

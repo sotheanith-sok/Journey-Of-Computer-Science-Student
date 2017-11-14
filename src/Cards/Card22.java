@@ -14,7 +14,7 @@ public class Card22 extends Card {
 		// TODO Auto-generated method stub
 		p.setIntegrity(p.getIntegrity() + 1);
 		p.setCraft(p.getCraft() + 1);
-		return "1 Integrity Point and 1 Craft Point";
+		return " 1 Integrity Point and 1 Craft Point";
 	}
 
 	@Override

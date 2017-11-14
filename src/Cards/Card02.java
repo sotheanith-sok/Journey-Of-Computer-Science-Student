@@ -11,7 +11,7 @@ public class Card02 extends Card {
 	public String pass(Player p) {
 		// TODO Auto-generated method stub
 		p.setCraft(p.getCraft()+1);
-		return "1 Craft Chip";
+		return " 1 Craft Chip";
 	}
 
 

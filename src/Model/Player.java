@@ -1,7 +1,13 @@
 package Model;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Random;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
 import Cards.CardNULL;
 
@@ -106,10 +112,33 @@ public class Player {
 	}
 
 	public void addCard(Card c) {
-		if (playerHand.size() == 7) {
-			deck.discardCard(c);
-		} else {
-			playerHand.add(c);
+		playerHand.add(c);
+		while (playerHand.size() > 7) {
+			if (isHuman() == true) {
+				ArrayList<Object> buttonList = new ArrayList<Object>();
+				for (int i = 0; i < getPlayerHand().size(); i++) {
+					JButton image = new JButton(getPlayerHand().get(i).getName(),
+							new ImageIcon(getPlayerHand().get(i).getPath()));
+					image.setHorizontalTextPosition(JButton.CENTER);
+					image.setVerticalTextPosition(JButton.EAST);
+					image.addActionListener(new ActionListener() {
+
+						@Override
+						public void actionPerformed(ActionEvent e) {
+							// TODO Auto-generated method stub
+							remove(image.getText());
+							JOptionPane.getRootFrame().dispose();
+						}
+					});
+					buttonList.add(image);
+
+				}
+
+				JOptionPane.showOptionDialog(null, "Please select a card to be remove:", "Too many cards!!!", JOptionPane.DEFAULT_OPTION,
+						JOptionPane.ERROR_MESSAGE, null, buttonList.toArray(new Object[buttonList.size()]), null);
+			} else {
+				deck.discardCard(playerHand.remove((int) Math.random() * playerHand.size()));
+			}
 		}
 	}
 
@@ -118,7 +147,6 @@ public class Player {
 			Card c = playerHand.remove(0);
 			playerHand.add(c);
 		}
-
 	}
 
 	public ArrayList<Card> getPlayerHand() {
@@ -143,13 +171,13 @@ public class Player {
 	public void remove(String s) {
 		int i = 0;
 		for (; i < getPlayerHand().size(); i++) {
-			if (getPlayerHand().get(i).getName().compareTo(s)==0)
+			if (getPlayerHand().get(i).getName().compareTo(s) == 0)
 				break;
 		}
 
 		if (getPlayerHand().size() > 0)
 			deck.discardCard(getPlayerHand().remove(i));
-			
+
 	}
 
 	public void addOneMoreCard() {

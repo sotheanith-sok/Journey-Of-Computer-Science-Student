@@ -14,7 +14,7 @@ public class Card24 extends Card {
 		// TODO Auto-generated method stub
 		p.setQualityPoints(p.getQualityPoints() + 5);
 		p.addOneMoreCard();
-		return "5 Quality Points and 1 Game Card";
+		return " 5 Quality Points and 1 Game Card";
 	}
 
 	@Override
