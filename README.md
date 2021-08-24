@@ -4,7 +4,7 @@
 An Age of Mythology inspired board game implemented using Java Swing.
 
 ## Prerequisites
- - [Java 1.8](https://www.oracle.com/java/technologies/javase-downloads.html)
+ - [Java](https://www.oracle.com/java/technologies/javase-downloads.html)
 
 ## Author
  - [Sotheanith Sok](https://github.com/sotheanith)
@@ -12,3 +12,6 @@ An Age of Mythology inspired board game implemented using Java Swing.
 
 ## Acknowledgments
  - All game assets are provided by [Dr. Michael Hoffman](https://www.csulb.edu/college-of-engineering/dr-michael-hoffman) of [CSULB](https://www.csulb.edu/)
+
+## Course
+ - [CECS 343 - Introduction to Software Engineering](http://catalog.csulb.edu/preview_course_nopop.php?catoid=5&coid=39993)
