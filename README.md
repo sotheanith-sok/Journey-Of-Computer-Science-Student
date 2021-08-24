@@ -1,13 +1,14 @@
-# Journey Of Computer Science Student
+<h1 align="center" style="border: none">Journey Of Computer Science Student</h1>
 
-This a turn base board game inspired by Age of Mythology. It is created with Java Swing for CECS 343 Class at CSULB
+## Overview
+An Age of Mythology inspired board game implemented using Java Swing.
 
+## Prerequisites
+ - [Java](https://www.oracle.com/java/technologies/javase-downloads.html)
 
-## Authors
-
-* **Sotheanith Sok** - *Programmer* - [Sotheanith Sok](https://github.com/sotheanith)
-* **Daniel** - *Programmer* - [Daniel](https://github.com/dafaqq)
+## Author
+ - [Sotheanith Sok](https://github.com/sotheanith)
+ - [Daniel](https://github.com/dafaqq)
 
 ## Acknowledgments
-
-* The game assets is provided by Dr. Michael Hoffman.
+ - All game assets are provided by [Dr. Michael Hoffman](https://www.csulb.edu/college-of-engineering/dr-michael-hoffman) of [CSULB](https://www.csulb.edu/)
