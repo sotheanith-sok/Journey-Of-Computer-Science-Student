@@ -7,7 +7,7 @@ An Age of Mythology inspired board game implemented using Java Swing.
  - [Java](https://www.oracle.com/java/technologies/javase-downloads.html)
 
 ## Authors
- - [Sotheanith Sok](https://github.com/sotheanith)
+ - [Sotheanith Sok](https://github.com/sotheanith-sok)
  - [Daniel](https://github.com/dafaqq)
 
 ## Acknowledgments
